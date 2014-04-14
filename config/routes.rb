@@ -4,10 +4,11 @@ AndradaPortfolioSite::Application.routes.draw do
       get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
       put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'            
     end
-  root to: 'about_me_contents#index'
+  root to: 'landing_pages#show'
 
   resource :sessions
   resources :nav_items
+  resources :landing_pages
   resources :about_me_contents, path: "about_me"
   resources :showreel
   resources :works

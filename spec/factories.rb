@@ -6,6 +6,12 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
+  factory :landing_page_photo do
+    link      "http://i.imgur.com/vHA8Mke.jpg"
+  end
+end
+
+FactoryGirl.define do
   factory :about_me_content do
     id "0"
     header "header"
