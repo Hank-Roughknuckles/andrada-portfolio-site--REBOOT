@@ -1,0 +1,28 @@
+<br />
+<br />
+
+<h3>Preview Grid Options</h3>
+
+<h4>Select Grid Tile Image</h4>
+<%= f.label :grid_tile_image %>
+<%= f.file_field :grid_tile_image, id: "grid_tile_image", 
+                                   class: "grid_tile_image_upload" %>
+
+<div class="invisible">
+  <%= f.label :grid_row %>
+  <%= f.number_field :grid_row, min: 0, max: 6, step: 1 %>
+
+
+  <%= f.label :grid_column %>
+  <%= f.number_field :grid_column, min: 0, step: 1 %>
+
+
+  <%= f.label :grid_sizex, "Tile size (horizontal)" %>
+  <%= f.number_field :grid_sizex, min: 0, max: 6, step: 1 %>
+
+
+  <%= f.label :grid_sizey, "Tile size (vertical)" %>
+  <%= f.number_field :grid_sizey, min: 0, step: 1 %>
+    
+  <%= f.submit "Save", class: "btn save" %>
+</div>

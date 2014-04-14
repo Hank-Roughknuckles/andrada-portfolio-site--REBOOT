@@ -1,0 +1,52 @@
+// Place all the styles related to the showreel controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.envelope 
+{
+  border: 1px solid #000;
+}
+
+.showreel_content
+{
+  margin-left: 66px;
+  height: 100%;
+  display: table;
+
+  .showreel_video_content
+  {
+    padding: 72px 0; //to vertically center
+    float: left;
+
+    iframe, img
+    {
+      width: 430px;
+      height: 328px;
+    }
+  }
+
+  .description_box
+  {
+    margin: 22px 0 22px 87px;
+    width: 291px;
+    padding-left: 17px;
+
+    .content_header
+    {
+      max-width: 254px;
+      margin-left: 0px; //was 14 originally
+    }
+
+    .content_description
+    {
+      max-width: 271px;
+    }
+  }
+}
+
+.edit_showreel_content 
+{
+  position: absolute;
+  top: 418px;
+  left: 83px;
+}

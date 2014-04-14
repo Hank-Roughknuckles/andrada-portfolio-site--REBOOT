@@ -1,0 +1,11 @@
+<%= render "showreel_content", :content => @content %>
+
+<%= form_for @content do |f| %>
+  <%= render "shared/default_record_form", :f => f %>
+
+  <%= f.label :background_image %>
+  <%= f.file_field :background_image, id: "background_image_upload" %>
+  <%= render "shared/dimension_message" %>
+
+  <%= f.submit "Save" %>
+<% end %>

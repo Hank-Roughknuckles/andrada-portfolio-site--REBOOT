@@ -1,0 +1,31 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "jquery.Jcrop.min" %>
+  <%= javascript_include_tag "jquery.Jcrop.min" %>
+<% end %>
+
+<div class="crop_image_popup">
+  <%= image_tag "close_button.png", size: "25", class: "close" %> 
+
+  <h5>Crop Tile Image</h5>
+
+ <!-- The uploaded image -->
+  <div class="image_preview_box">
+    <img class="image_preview" id="cropbox" src=""/>
+  </div>
+  
+  <!-- The "Change image" button -->
+  <%= submit_tag 'Change image', type: 'button', class: "crop_change_image btn btn-success" %>
+
+  <!-- Hidden form for crop coordinates and the "Save" button -->
+  <div class="save_after_cropping">
+    <%= form_for @content do |f| %>
+      <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+        <%= f.hidden_field attribute, id: attribute %>
+      <% end %>
+      <%= f.submit "Save", class: "btn btn-primary", 
+                           id: "crop_popup_save" %>
+    <% end %>
+  </div>
+
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module AboutMeContentsHelper
+end

@@ -1,0 +1,10 @@
+<!-- Form for keeping track of the positions of each tile in gridster -->
+<div class="invisible">
+  <%= form_for @position, id: "grid_position_form", remote: true do |f| %>
+    <%= f.text_area :serialized_array, 
+      columns: 200, 
+      rows: 10, 
+      style: "width: 800px" %>
+    <%= f.submit "Save" %>
+  <% end %>
+</div>

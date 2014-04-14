@@ -1,0 +1,46 @@
+<%# The contents of each slide in the slider %>
+<li class="<%= @is_preview ? "slide_preview" : "slide" %>" style="<%= get_background_css AboutMeContent, content.id %>;
+  <%= "display: none" if content.id != @active_content_id %>">
+
+  <a href="#">
+    <div class="frame frame_left prev_control left_frame_button">
+      <div class="frame_arrow">&lt;</div>
+    </div>
+  </a>
+
+  <div class="description_box">
+    <div class="content_header" id="header_preview">
+      <%= content.header %>
+    </div>
+
+    <div class="content_description" id="description_preview">
+      <%= content.description %>
+    </div>
+  </div>
+
+  <% left_slide = AboutMeContent.find((content.id - 1) % @count) %>
+  <a href="#">
+    <div class="direction_button prev_control left_direction_button">
+      <div class="left_arrow">&lt;</div>
+      <div class="left_button_text">
+        <%= left_slide.button_title %>
+      </div>
+    </div>
+  </a>
+
+  <% right_slide = AboutMeContent.find((content.id + 1) % @count) %>
+  <a href="#">
+    <div class="direction_button next_control right_direction_button">
+      <div class="right_button_text">
+        <%= right_slide.button_title %>
+      </div>
+      <div class="arrow_button right_arrow">&gt;</div>
+    </div>
+  </a>
+
+  <a href="#">
+    <div class="frame frame_right next_control right_frame_button">
+      <div class="frame_arrow">&gt;</div>
+    </div>
+  </a>
+</li>

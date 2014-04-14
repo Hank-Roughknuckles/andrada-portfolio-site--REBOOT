@@ -1,0 +1,33 @@
+<% if local_assigns.has_key? :edit_page %>
+  <% if edit_page == true %>
+    <% edit_page = true %>
+  <% else %>
+    <% edit_page = false %>
+  <% end %>
+<% else %>
+  <% edit_page = false %>
+<% end %>
+
+<div class="content_detail content_<%= content.id %>">
+  <% if !edit_page %>
+    <button class="close">
+      <%= image_tag "close_button.png", size: "48" %> 
+    </button>
+  <% end %>
+
+  <div class="lightbox_main">
+    <%= render "shared/embedded_video", :content => content %>
+
+    <% if user_signed_in? && edit_page == false %>
+      <div class="lightbox_edit_link">
+        <% if content.class.table_name == "works" %>
+          <%= link_to "Edit Item", edit_work_path(content) %>
+        <% else %>
+          <%= link_to "Edit Item", edit_current_project_path(content) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render "shared/content_detail_display", :content => content %>
+</div>

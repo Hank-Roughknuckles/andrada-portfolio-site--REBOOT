@@ -1,0 +1,37 @@
+<%= form_for @content do |f| %>
+  <div class="save_button">
+    <%= f.submit "Save", class: "btn save", id: "save_button_top" %>
+  </div>
+
+  <div class="save_button">
+    <%= f.submit "Save", class: "btn save", id: "save_button_bottom" %>
+  </div>
+
+  <div class="lightbox_bottom">
+
+    <!-- The Header -->
+    <div class="content_header"> 
+      <%= f.text_area :header, :maxlength => header_limit %>
+    </div>
+
+
+    <!-- The Description -->
+    <div class="content_description">
+      <%= f.text_area :description, 
+        cols: 50, 
+        rows: 3, 
+        :maxlength => description_limit %>
+    </div>
+
+
+    <!-- The Progress (if any) -->
+    <div class="content_progress content_progress_<%= content.id %>">
+    <% if @content.class.table_name == "current_projects" %>
+      <%= f.number_field :progress, min: 0, max: 100, step: 1 %>
+      % Completed
+      <%= render "shared/progress_bar", :content => content %>
+    <% end %>
+    </div>
+
+  </div>
+<% end %>

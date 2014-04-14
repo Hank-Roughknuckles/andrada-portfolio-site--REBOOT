@@ -1,0 +1,60 @@
+// Place all the styles related to the contact controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$form_grey: #676460;
+
+.dropdown {
+  display: none;
+}
+
+.contact_details_container {
+  float: left;
+  margin-top: 125px;
+  margin-left: 55px;
+  width: 450px;
+
+  .contact_details {
+    margin-left: 30px;
+  }
+}
+
+
+/* Contact form stuff */
+.contact_form {
+  float: left;
+  margin-left: 100px;
+  margin-top: 45px;
+  display: none;
+  color: #cecdcc;
+
+  .sender_email, .body_form {
+    background-color: $form_grey;
+    width: 245px;
+    border-radius: 9px;
+  }
+
+  .sender_email {
+    padding-left: 10px;
+    border: 1px black solid;
+  }
+
+  .body_form {
+    margin-top: 25px;
+    border: 1px black solid;
+    height: 275px;
+    padding: 10px;
+  }
+
+  .contact_form_submit {
+    background-color: $form_grey;
+    border: 1px black solid;
+    width: 76px;
+    height: 23px;
+    border-radius: 12px;
+    margin-top: 10px; 
+    margin-left: 170px; 
+    text-align: center;
+  }
+}
+

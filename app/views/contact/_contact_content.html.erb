@@ -1,0 +1,78 @@
+<div class="envelope" 
+  style="<%= get_background_css Contact, @contact_info.id %>">
+
+  <div class="contact_details_container">
+    <h3>Leave a message <span class="fake_link form_show">here</span></h3>
+    <br />
+    <h2>Or find me on:</h2>
+
+    <div class="contact_details">
+      <%# Render a form if it's the edit page %>
+      <% if request.original_url =~ /edit/ %>
+        <%= form_for @contact_info do |f| %>
+          <div class="gmail">
+            <%= image_tag "gmail_icon.png", size: "48" %> 
+            <%= f.text_field :email %>
+          </div>
+
+          <div class="vimeo">
+            <%= image_tag "vimeo_icon.png", size: "48" %> 
+            <%= f.text_field :vimeo_id %>
+          </div>
+
+          <div class="facebook">
+            <%= image_tag "fb_icon.png", size: "48" %> 
+            <%= f.text_field :facebook %>
+          </div>
+
+          <%= f.label :background_image %>
+          <%= f.file_field :background_image, 
+            id: "background_image_upload" %>
+          <%= render "shared/dimension_message" %>
+
+          <%= f.submit "Save" %>
+        <% end %>
+
+
+      <%# Render a normal display if it's not the edit page %>
+      <% else %>
+        <div class="gmail">
+          <%= image_tag "gmail_icon.png", size: "30" %> 
+          <%= mail_to @contact_info.email %>
+        </div>
+
+        <div class="vimeo">
+          <%= image_tag "vimeo_icon.png", size: "30" %> 
+          <a href="<%= @contact_info.vimeo_id %>">
+            <%= remove_http @contact_info.vimeo_id %>
+          </a>
+        </div>
+
+        <div class="facebook">
+          <%= image_tag "fb_icon.png", size: "30" %> 
+          <a href="<%= @contact_info.facebook %>">
+            <%= remove_http @contact_info.facebook %>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div> <!-- END contact div -->
+
+
+  <div class="contact_form">
+    <%= form_tag(send_mail_path) do %>
+      <div class="sender_email_container">
+        <%= text_field_tag ':email', nil, 
+          placeholder: "Your email address",
+          class: "sender_email" %>
+      </div>
+      <div class="body_form_container">
+        <%= text_area ':body', nil, placeholder: "Your message", 
+                                    class: "body_form" %>
+      </div>
+
+      <%= submit_tag "Submit", class: "contact_form_submit" %>
+    <% end %>
+  </div> <!-- END contact_form div -->
+
+</div> <!-- END envelope div -->

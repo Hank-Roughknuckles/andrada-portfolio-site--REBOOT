@@ -1,0 +1,16 @@
+.form_fields 
+{
+  width: 100%;
+  overflow: auto;
+
+  .edit_email, .edit_password
+  {
+    width: 50%;
+    float: left;
+  }
+}
+
+.submit_button
+{
+  margin-top: 5%;
+}

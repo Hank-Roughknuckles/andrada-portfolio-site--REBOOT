@@ -1,0 +1,47 @@
+<% provide( :title, "About Me - Edit" ) %>
+
+<%= form_for @content, :html => {:multipart => true} do |f| %>
+  <div class="save_group save_top">
+    <div class="save_button"><%= f.submit "Save", class: "btn save", id: "save_button_top" %></div>
+    <div class="save_reminder"></div>
+  </div>
+
+  <%= render "slide", :content => @content %>
+
+  <div class="slide_edit">
+    <p style="margin-bottom: 20px">
+    <div class="header_group">
+      <%= label_tag :header %>
+      <%= f.text_field :header, placeholder: "Header", 
+        id: "header_form" %>
+    </div>
+
+    <div class="header_group">
+      <%= label_tag :description %>
+      <%= f.text_area :description, placeholder: "Description", 
+        id: "description_form", size: "20x10" %>
+    </div>
+
+    <div class="header_group">
+      <%= label_tag :button_title %>
+      <%= f.text_field :button_title, placeholder: "Button Title", id:
+        "button_title_form" %>
+      <div id="button_title_description_helper">Button Title is the name
+        for this slide that appears on the nav buttons in other
+        slides
+      </div>
+    </div>
+
+    <div class="header_group">
+      <%= f.label :background_image %>
+      <%= f.file_field :background_image, id: "background_image_upload" %>
+      <%= render "shared/dimension_message" %>
+    </div>
+    </p>
+
+    <div class="save_group save_bottom">
+      <div class="save_button"><%= f.submit "Save", class: "btn save", id: "save_button_bottom" %></div>
+      <div class="save_reminder"></div>
+    </div>
+  </div>
+<% end %>

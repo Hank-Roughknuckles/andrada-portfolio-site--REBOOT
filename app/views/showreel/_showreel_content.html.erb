@@ -1,0 +1,18 @@
+<div class="envelope" style="<%= get_background_css Showreel, @content.id %>">
+  <div class="showreel_content">
+
+    <div class="showreel_video_content">
+      <%= render "shared/embedded_video", :content => @content %>
+    </div>
+
+    <div class="description_box">
+      <div class="content_header">
+        <%= @content.header %>
+      </div>
+      <div class="content_description">
+        <%= @content.description %>
+      </div>
+    </div>
+
+  </div>
+</div>

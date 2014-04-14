@@ -1,0 +1,7 @@
+<% if @content.media_choice == "link" %>
+  <%= embed_media(link: content.media_link) %>
+<% else %>
+  <div class="content_media_preview"><%= embed_media(uploaded_image_url: content.media_image.url) %></div>
+<% end %>
+<div class="content_header"><%= content.header %></div>
+<div class="content_description"><%= content.description %></div>

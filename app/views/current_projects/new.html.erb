@@ -1,0 +1,17 @@
+<% provide( :title, "Add New Project" ) %>
+<%= render "head_contents" %>
+
+
+<h3>New Project</h3>
+
+<div class="content_preview">
+  <%= render "shared/content_lightbox", :content => @content, 
+    :edit_page => true %>
+</div>
+
+<div class="envelope">
+  <%= render "current_projects_form", :content => @content %>
+  <%= render "shared/default_grid", :draggable => true, 
+    :emphasize_highlighted => true, 
+    :active_record_object => CurrentProject %>
+</div>

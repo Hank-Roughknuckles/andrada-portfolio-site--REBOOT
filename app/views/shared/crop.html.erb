@@ -1,0 +1,62 @@
+<% provide(:title, "Crop image") %>
+
+<% base_widget_width = 138 %>
+<% base_widget_height = 138 %>
+<% max_grid_columns = 6 %>
+<% initial_preview_w = base_widget_width * @content.grid_sizex %>
+<% initial_preview_h = base_widget_height * @content.grid_sizey %>
+
+<% content_for(:head) do %>
+  <%= render "shared/crop_head_content", 
+    :base_widget_width => base_widget_width, 
+    :base_widget_height => base_widget_height %>
+<% end %>
+
+
+<h4>Preview</h4>
+<div class="crop_controls">
+  <!-- The Cropbox -->
+  <div class="cropbox_container">
+    <%= image_tag @content.grid_tile_image.url(:large), id: "cropbox" %>
+  </div>
+
+  <!-- The Form -->
+  <div class="form_container">
+    <%= form_for @content do |f| %>
+      <%# Form for cropping attributes %>
+      <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+        <%= f.hidden_field attribute, id: attribute %>
+      <% end %>
+
+      <!-- Form for grid tile size -->
+      <% for attribute in [ 
+        {:attribute_name => :grid_sizex, :label => "Tile Width - Horizontal", :max_value => (max_grid_columns + 1 - @content.grid_column)}, 
+        {:attribute_name => :grid_sizey, :label => "Tile Height - Vertical", :max_value => 20}
+      ] %>
+        <p>
+          <%= f.label attribute[:attribute_name], attribute[:label] %>
+          <%= f.number_field attribute[:attribute_name], min: 1, max: attribute[:max_value], step: 1, id: "edit_#{attribute[:attribute_name]}" %>
+        </p>
+      <% end %>
+
+      <%= f.submit "Save", class: "btn btn-primary", 
+                           id: "crop_popup_save" %>
+    <% end %>
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- The Preview Image -->
+<div id="preview_div" style="width: <%= initial_preview_w %>px; height: <%= initial_preview_h %>px; overflow: hidden;">
+  <%= image_tag @content.grid_tile_image.url(:large), :id => "preview" %>
+</div>
+
+
+
+<%= render "shared/grid_position_form", :object => @position %>
+
+<div class="gridster">
+  <ul>
+    <%= render "shared/grid_tiles", :surpress_details => true, 
+                                    :grid_for_cropping => true %>
+  </ul>
+</div>

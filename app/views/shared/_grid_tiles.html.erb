@@ -1,0 +1,66 @@
+<% if !local_assigns.has_key? :surpress_details %>
+  <% surpress_details = false %>
+<% end %>
+<% if !local_assigns.has_key? :grid_for_cropping %>
+  <% grid_for_cropping = false %>
+<% end %>
+
+<%# Turn debugging mode on (true) or off (false) %>
+<% debugging = false %>
+
+<% for content in @contents  %>
+  <li class="<%= "grid_tile grid_tile_#{content.id}" %>" 
+  data-row="<%= content.grid_row %>" 
+  data-col="<%= content.grid_column %>" 
+  data-sizex="<%= content.grid_sizex %>" 
+  data-sizey="<%= content.grid_sizey %>"
+  data-databaseid="<%= content.id %>">
+
+  <%# Add highlighted or faded class %>
+  <% image_class = "expand_tile tile_image" %>
+  <% image_class = image_class + " debugging" if debugging %>
+  <% if content == @content %>
+    <% image_class = image_class + " highlighted" %>
+  <% else %>
+    <% image_class = image_class + " faded" %>
+  <% end %>
+
+  <%# Use crop icon or grid's photo %>
+  <% if grid_for_cropping && content == @content %>
+    <%= image_tag "crop_glyphicon.png", 
+      class: image_class, id: "tile_#{content.id}" %>
+  <% else %>
+    <%= image_tag content.grid_tile_image.url(:large), 
+      class: image_class, id: "tile_#{content.id}" %>
+  <% end %>
+
+  <% if debugging %>
+    <span class="debugging">
+      row: <%= content.grid_row %> <br>
+      col: <%= content.grid_column %> <br>
+      sizex: <%= content.grid_sizex %> <br>
+      sizey: <%= content.grid_sizey %> <br>
+      id: <%= content.id %> <br>
+    </span>
+  <% end %>
+
+  <%# Add edit tools %>
+  <% if( user_signed_in? && !surpress_details ) %>
+  <div class="edit_tools fake_link">
+    <%# Delete button %>
+    <%= image_tag "glyphicon_button_delete.png", 
+                   size: "20x20", 
+                   id: "tile_delete_#{content.id}",
+                   class: "tile_delete" %>
+
+    <%# Edit button %>
+    <%= image_tag "glyphicon_edit.jpg",
+                   size: "35x35",
+                   id: "tile_edit_#{content.id}",
+                   class: "tile_edit" %>
+  </div>
+  <% end %>
+  </li>
+
+  <%= (render "shared/content_lightbox", :content => content) unless surpress_details %>
+<% end %>

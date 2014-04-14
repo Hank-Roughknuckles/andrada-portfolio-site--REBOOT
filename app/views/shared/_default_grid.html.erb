@@ -1,0 +1,38 @@
+<% content_for :head do %>
+  <%= render "shared/gridster_link_tags" %>
+  <%= javascript_include_tag "grid" %>
+  <%= stylesheet_link_tag "grid" %>
+<% end %>
+
+<% if !local_assigns.has_key? :draggable %>
+  draggable = false
+<% end %>
+<% if !local_assigns.has_key? :emphasize_highlighted %>
+  emphasize_highlighted = false
+<% end %>
+
+
+<% if user_signed_in? %>
+<div class="toggle_edit_tools fake_link">
+  Toggle Edit Mode
+</div>
+<% end %>
+
+
+<div class="gridster 
+  <%= "emphasize_highlighted" if emphasize_highlighted %>">
+  <ul>
+    <%= render "shared/grid_tiles" %>
+  </ul>
+</div>
+
+
+<% if user_signed_in? %>
+<%= render "shared/edit_table" %>
+<% end %>
+
+<% if draggable == true %>
+  <%= render "shared/grid_position_form" %>
+<% else %>
+  <span class="invisible" id="drag_disabled"></span>
+<% end %>

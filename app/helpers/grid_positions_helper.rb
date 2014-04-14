@@ -1,0 +1,2 @@
+module GridPositionsHelper
+end

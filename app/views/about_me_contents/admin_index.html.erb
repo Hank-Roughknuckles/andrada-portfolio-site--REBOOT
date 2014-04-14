@@ -1,0 +1,18 @@
+<table border=1 class="edit_table">
+  <tr>
+    <th>Background Image</th>
+    <th>Button Title</th>
+    <th>Header</th>
+    <th>Description</th>
+  </tr>
+  
+  <% for content in @contents %>
+    <tr>
+      <td><%= image_tag content.background_image.url %></td>
+      <td><%= content.button_title %></td>
+      <td><%= content.header %></td>
+      <td><%= content.description %></td>
+      <td><%= link_to "Edit", edit_about_me_content_path(content) %></td>
+    </tr>
+  <% end %>
+</table>

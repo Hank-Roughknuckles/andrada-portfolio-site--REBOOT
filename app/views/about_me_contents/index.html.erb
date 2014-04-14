@@ -1,0 +1,14 @@
+<% provide( :title, "About Me" ) %>
+<%= render "head_contents" %>
+
+<ul class="slider">
+  <% for content in @contents %>
+    <%= render "slide", :content => content %>
+  <% end %>
+</ul>
+
+<% if user_signed_in? %>
+  <span class="edit_content">
+    <%= link_to "Edit Slider Content", :action => "admin_index" %>
+  </span>
+<% end %>

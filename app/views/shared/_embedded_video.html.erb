@@ -1,0 +1,7 @@
+<%# Embed a video based on the passed content variable %>
+
+<% if content.media_choice == "link" %>
+  <%= embed_media(link: content.media_link, class: "media_viewer") %>
+<% else %>
+  <%= embed_media(uploaded_image_url: content.media_image.url, class: "media_viewer") %>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="lightbox_bottom">
+
+  <!-- The Header -->
+  <div class="content_header"> 
+    <%= content.header %>
+  </div>
+
+  <!-- The Description -->
+  <div class="content_description">
+    <%= content.description %>
+  </div>
+
+  <!-- The Progress (if any) -->
+  <div class="content_progress content_progress_<%= content.id %>">
+  <% if content.class.table_name == "current_projects" %>
+    <span class="progress_amount">
+      <%= content.progress %>% Completed
+    </span>
+    <%= render "shared/progress_bar", :content => content %>
+  <% end %>
+  </div>
+
+</div>

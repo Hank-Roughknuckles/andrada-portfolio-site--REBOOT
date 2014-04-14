@@ -1,0 +1,202 @@
+$selected_blue: #8094a6;
+$background_tan: #f2e9d8;
+
+.gridster
+{
+  .gs-w 
+  {
+    position: absolute;
+  }
+
+  li
+  {
+    list-style-type: none;
+
+    img.tile_image 
+    {
+      width: 100%;
+      height: 100%;
+    }
+
+    img.debugging
+    {
+      position: absolute;
+      top: 0;
+    }
+
+    span.debugging
+    {
+      position: absolute;
+      background-color: white;
+    }
+  }
+
+  li.new
+  {
+    background-color: $selected_blue;
+    border: 4px dotted #000;
+  }
+}
+
+.emphasize_highlighted 
+{
+  .faded 
+  {
+    opacity: 0.15;
+  }
+
+  .highlighted
+  {
+    opacity: 1;
+  }
+}
+
+.edit_tools 
+{
+  img
+  {
+    opacity: 1;
+  }
+
+  .tile_edit
+  {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+.toggle_edit_tools
+{
+  position: absolute;
+  margin-left: -180px;
+  margin-top: 30px;
+}
+
+.tile_delete 
+{
+  position: absolute;
+  top: -4px;
+  right: -6px;
+}
+
+
+//Lightbox stuff
+.content_detail
+{
+  display: none; //will be activated by clicking grid tiles
+  position: relative;
+  z-index: 10000;
+  background-color: $background_tan;
+  text-align: center;
+  min-width: 1000px;
+  margin-left: -68px;
+  /* margin-right: auto; */
+  top: -180px;
+}
+
+.content_preview 
+{
+  margin-top: 175px;
+
+  .content_detail 
+  {
+    display: block;
+    border: 1px black solid;
+    z-index: 0;
+    top: -160px;
+  }
+
+  input[type="submit"]
+  {
+    position: absolute;
+    left: 20px;
+  }
+
+  #save_button_bottom
+  {
+    bottom: 79px;
+  }
+
+  #save_button_top 
+  {
+    left: 20px;
+    top: 13px;
+  }
+
+  input[type="text"], textarea, input[type="number"]
+  {
+    background-color : #000; 
+    color: #AAAAAA;
+  }
+
+  input[type="text"] 
+  {
+    max-width: 165px;
+    text-align: center;
+  }
+}
+
+.overlay
+{
+	z-index: 10000;
+	filter: alpha(opacity=50); /*older IE*/
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); /* IE */
+	-moz-opacity: .50; /*older Mozilla*/
+	-khtml-opacity: 0.5;   /*older Safari*/
+
+	opacity: 0.5;   /*supported by current Mozilla, Safari, and Opera*/
+	background-color:#000000;
+	position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  text-align:center;
+  vertical-align:middle;
+  display: none;
+}
+
+// Detail lightbox
+.lightbox_main
+{
+  /* height: 531px; */
+  padding: 15px;
+  line-height: 531px;
+  
+  img
+  {
+    max-height: 475px;
+    max-width: 800px;
+  }
+
+  iframe
+  {
+    vertical-align: middle;
+  }
+  
+  .lightbox_edit_link
+  {
+    position: absolute;
+    line-height: 30px;
+    right: 0px;
+    bottom: -40px;
+    font-size: 20px;
+    height: 35px;
+    width: 120px;
+    background: green;
+    border-radius: 20px;
+
+    a {
+      vertical-align: text-top;
+      color: #FFFFFF;
+
+      &:hover
+      {
+        text-decoration: none;
+        font-size: 21px;
+      }
+    }
+  }
+}
+

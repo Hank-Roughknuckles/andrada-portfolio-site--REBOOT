@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    <%= make_title(yield :title) %>
+  </title>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application", 
+      "data-turbolinks-track" => true %>
+    <%= javascript_include_tag params[:controller] %>
+    <%= stylesheet_link_tag params[:controller] %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+</head>
+
+<body>
+<div class="overlay"></div> <!-- used when a tile is clicked -->
+
+<div class="container">
+  <div class="secondary_container">
+    <%= render 'header' %>
+
+    <div class="main_content">
+      <%= yield %>
+    </div>
+
+    <% if user_signed_in? %>
+      <div class="sign_in">
+        <%= link_to "Sign Out", destroy_user_session_path, :method =>
+        :delete %>
+         | <%= link_to "Account Settings", edit_user_registration_path %>
+      </div>
+    <% else %>
+      <div class="sign_in">
+        <%= link_to "Sign In", new_user_session_path %>
+      </div>
+    <% end %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+</div>
+</body>
+</html>

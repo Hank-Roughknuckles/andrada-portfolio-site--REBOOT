@@ -1,0 +1,9 @@
+<% provide( :title, "Showreel" ) %>
+
+<%= render "showreel_content", :content => @content %>
+
+<% if user_signed_in? %>
+  <div class="edit_showreel_content">
+    <%= link_to "Edit Content", edit_showreel_path(@content) %>
+  </div>
+<% end %>

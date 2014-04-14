@@ -1,0 +1,198 @@
+// Place all the styles related to the about_me_contents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";
+@import "custom";
+
+@font-face
+{
+  font-family: 'Khmer';
+  src: font-url('KhmerUI.ttf')
+}
+
+//slide editing forms
+.edit_about_me-content
+{
+  margin-top: 500px;
+}
+
+.header_group
+{
+  float: left;
+  margin-left: 10px;
+}
+
+.slide_edit
+{
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+#button_title_description_helper
+{
+  color: $selected_blue;
+  vertical-align: super;
+  width: 140px;
+  display: none;
+}
+
+#header_form
+{
+  width: 130px;
+}
+
+#button_title_form
+{
+  width: 130px;
+}
+
+#background_image_upload
+{
+  width: 175px;
+}
+
+//Save stuff
+.save_group
+{
+  height: 35px;
+  color: $selected_blue;
+}
+
+.save_top
+{
+
+}
+
+.save_bottom
+{
+  margin-top: 226px;
+  height: 35px;
+}
+
+.save_button
+{
+  float: left;
+}
+
+.save_reminder
+{
+  float:left;
+  padding: 7px 20px;
+}
+
+
+//the slider
+.slider
+{
+  margin: 0px;
+}
+
+.slide
+{
+  position: absolute;
+  left: 248px;
+}
+
+.slide_preview
+{
+  position: relative;
+  margin-top: 40px;
+}
+
+.slide, .slide_preview
+{
+  list-style-type:none;
+  border: black 1px solid;
+  height: 454px;
+  width: 943px;
+
+  .frame
+  {
+    height: 453px;
+    width: 60px;
+    background-color: rgba(28,28,28,0.3);
+  }
+
+  .frame_left
+  {
+    margin-top: -1px;
+    float:left;
+  }
+
+  .frame_right
+  {
+    float:right;
+  }
+
+  .frame_arrow
+  {
+    margin-top: 215px;
+    margin-left: 15px;
+    border-radius: 15px;
+    font-size: 30px;
+    background-color: #959595;
+    opacity: 1;
+    color: #d1d1d1;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+  }
+
+  .frame_button_right
+  {
+    float: right;
+  }
+
+
+  // Buttons
+  $arrow-outside-padding: 10px;
+
+  .direction_button
+  {
+    font-size: 25px;  
+    font-family: 'Khmer';
+    margin-top: 382px;
+    margin-right: 8px;
+    float: left;
+    height: 50px;
+    width: 203px;
+    border-radius: 5px;
+  }
+
+  // All stuff regarding buttons
+  .left_button_text, .right_button_text, .left_arrow, .right_arrow
+  {
+    float: left;
+    padding-top: 7px;
+  }
+
+  //stuff only pertaining to the arrows inside the buttons
+  .left-arrow, .right-arrow
+  {
+    width: 30px;
+    overflow: hidden;
+  }
+
+  //stuff only pertaining to the text inside the buttons
+  .left_button_text, .right_button_text
+  {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 165px;
+  }
+
+  .left_arrow
+  {
+    padding-left: $arrow-outside-padding;
+  }
+
+  .right_arrow
+  {
+    padding-left: 5px;
+    margin-left: 5px;
+  }
+}

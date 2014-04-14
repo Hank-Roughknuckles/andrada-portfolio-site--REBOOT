@@ -1,0 +1,7 @@
+<% provide( :title, "Contact" ) %>
+
+<% if user_signed_in? %>
+  <%= link_to 'Edit Contact Info', edit_contact_path(@contact_info), class: "edit_content" %>
+<% end %>
+
+<%= render "contact_content" %>

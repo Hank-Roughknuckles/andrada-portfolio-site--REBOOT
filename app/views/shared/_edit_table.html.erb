@@ -1,0 +1,19 @@
+<%# Contains table for displaying all items to the admin so that
+  he/she can get a quick overview of all of them %>
+
+<table border="1" class="edit_table invisible">
+<% for content in @contents %>
+  <tr>
+    <% if request.original_url.match /work/ %>
+      <% path = edit_work_path( content ) %>
+    <% elsif request.original_url.match /current_project/ %>
+      <% path = edit_current_project_path( content ) %>
+    <% else %>
+      <% raise "edit_table partial not called from a work or current_project view" %>
+    <% end %>
+
+    <td><%= link_to "Edit", path, id: "edit_item_#{content.id}" %></td>
+    <td><%= button_to "Delete", content, method: "delete", id: "delete_item_#{content.id}" %></td>
+  </tr>
+<% end %>
+</table>
