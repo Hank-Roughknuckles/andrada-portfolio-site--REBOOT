@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414104638) do
+ActiveRecord::Schema.define(version: 20140414105622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,28 +40,6 @@ ActiveRecord::Schema.define(version: 20140414104638) do
     t.string   "facebook"
   end
 
-  create_table "current_projects", force: true do |t|
-    t.string   "header"
-    t.text     "description"
-    t.integer  "progress"
-    t.string   "media_link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "media_image_file_name"
-    t.string   "media_image_content_type"
-    t.integer  "media_image_file_size"
-    t.datetime "media_image_updated_at"
-    t.string   "media_choice"
-    t.integer  "grid_row"
-    t.integer  "grid_column"
-    t.integer  "grid_sizex"
-    t.integer  "grid_sizey"
-    t.string   "grid_tile_image_file_name"
-    t.string   "grid_tile_image_content_type"
-    t.integer  "grid_tile_image_file_size"
-    t.datetime "grid_tile_image_updated_at"
-  end
-
   create_table "grid_positions", force: true do |t|
     t.string   "parent_name"
     t.text     "serialized_array"
@@ -86,26 +64,5 @@ ActiveRecord::Schema.define(version: 20140414104638) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "works", force: true do |t|
-    t.string   "media_link"
-    t.string   "header"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "media_choice"
-    t.string   "media_image_file_name"
-    t.string   "media_image_content_type"
-    t.integer  "media_image_file_size"
-    t.datetime "media_image_updated_at"
-    t.integer  "grid_row"
-    t.integer  "grid_column"
-    t.integer  "grid_sizex"
-    t.integer  "grid_sizey"
-    t.string   "grid_tile_image_file_name"
-    t.string   "grid_tile_image_content_type"
-    t.integer  "grid_tile_image_file_size"
-    t.datetime "grid_tile_image_updated_at"
-  end
 
 end
