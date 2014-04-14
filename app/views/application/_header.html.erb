@@ -9,18 +9,22 @@
       :action => 'index'
     }, 
     { 
-      :class => ('selected' if request.path =~ /about_me_contents#index/ || request.path == "/"),
+      :class => ('selected' if request.path =~ /landing_page/ || request.path == "/"),
       :id => "navbar-first"
     } 
     %>
   </li>
 
-  <li id="nav_item_2"><%= link_to "Showreel", Showreel.first,
+  <li id="nav_item_2"><%= link_to "Video", 
+    {
+      :controller => 'video_works',
+      :action => 'index'
+    },
     { :class => ('selected' if request.path =~ /showreel/) } 
     %>
   </li>
 
-  <li id="nav_item_3"><%= link_to "Works", 
+  <li id="nav_item_3"><%= link_to "Photo", 
     {
       :controller => 'works',
       :action => 'index'
