@@ -4,12 +4,7 @@
   <title>
     <%= make_title(yield :title) %>
   </title>
-    <%= stylesheet_link_tag "application", media: "all" %>
-    <%= javascript_include_tag "application", 
-      "data-turbolinks-track" => true %>
-    <%= javascript_include_tag params[:controller] %>
-    <%= stylesheet_link_tag params[:controller] %>
-    <%= csrf_meta_tags %>
+    <%= render 'shared/layout_head_tags' %>
     <%= yield(:head) %>
 </head>
 
@@ -24,17 +19,7 @@
       <%= yield %>
     </div>
 
-    <% if user_signed_in? %>
-      <div class="sign_in">
-        <%= link_to "Sign Out", destroy_user_session_path, :method =>
-        :delete %>
-         | <%= link_to "Account Settings", edit_user_registration_path %>
-      </div>
-    <% else %>
-      <div class="sign_in">
-        <%= link_to "Sign In", new_user_session_path %>
-      </div>
-    <% end %>
+    <%= render 'shared/layout_sign_in_links' %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
