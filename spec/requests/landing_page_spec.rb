@@ -6,9 +6,9 @@ describe "LandingPage" do
 
   subject{ page }
 
-  describe "showView" do
+  describe "the 'show' view" do
 
-    describe "withoutLoggingIn" do
+    describe "without logging in" do
       before do
         logout :user
         visit root_path
@@ -18,7 +18,7 @@ describe "LandingPage" do
       it { should_not have_content "Sign Out" }
     end
 
-    describe "withLoggingIn" do
+    describe "with logging in" do
       before do
         login_as user
         visit root_path
@@ -27,13 +27,25 @@ describe "LandingPage" do
       it { should_not have_content "Sign In" }
     end
 
-    describe "LandingPageContents" do
+    describe "page contents" do
       before do
         visit root_path
         print page.html
       end
 
+      it { should have_title "Andrada Popan-Dorca" }
+
+      it { should have_link "About Me" }
+      it { should have_link "Video" }
+      it { should have_link "Photo" }
+      it { should have_link "Current Projects" }
+      it { should have_link "Contact" }
+
       it { should have_xpath "//img[@src='#{landing_page_photo.link}']" }
+    end
+
+    describe "links in the page" do
+      it "points to the proper page"
     end
   end
 end

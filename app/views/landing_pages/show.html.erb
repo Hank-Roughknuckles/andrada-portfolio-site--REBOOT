@@ -1,2 +1,12 @@
-hey
-<img src="<%= @landing_page_photo.link %>" alt="">
+<%# TODO: make the links point properly %>
+<ul>
+  <li><%= link_to "About Me", about_me_contents_path %></li>
+  <li><%= link_to "Video" %></li>
+  <li><%= link_to "Photo" %></li>
+  <li><%= link_to "Current Projects" %></li>
+  <li><%= link_to "Contact", Contact.first %></li>
+</ul>
+
+
+<img src="<%= @landing_page_photo.link %>" alt="A gradient image fading from light to dark blue" title="Andrada Popan-Dorca">
+
