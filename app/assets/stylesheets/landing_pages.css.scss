@@ -1,3 +1,66 @@
 // Place all the styles related to the landing_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, nav, ul {
+  height: 100%;
+}
+
+.landing-page-nav {
+  background-image: url("http://i.imgur.com/vHA8Mke.jpg");
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.nav-element {
+  display: inline-block;
+  height: 100%;
+  width: 19.5%;
+  padding: 10% 1% 0 1%;
+  text-align: center;
+  position: relative;
+}
+
+#title-text {
+  font-size: 47px;
+  font-family: khmer;
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);}
+
+/*************************************************************************
+/*
+/* Border
+/*
+/************************************************************************/
+.full-divider-right {
+  border-right: 2px white solid;
+}
+
+.high-divider-right, .low-divider-right {
+  position: absolute;
+  display: inline-block;
+  border-right: 2px white solid;
+  height: 44%;
+}
+
+.high-divider-right {
+  top: 0;
+}
+
+.low-divider-right {
+  bottom: 0;
+}

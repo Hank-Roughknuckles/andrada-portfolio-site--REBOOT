@@ -1,11 +1,26 @@
 <%# TODO: make the links point properly %>
-<ul>
-  <li><%= link_to "About Me", about_me_contents_path %></li>
-  <li><%= link_to "Video" %></li>
-  <li><%= link_to "Photo" %></li>
-  <li><%= link_to "Current Projects" %></li>
-  <li><%= link_to "Contact", Contact.first %></li>
-</ul>
+<nav>
+  <div class="landing-page-nav">
+    <%= link_to "About Me", 
+      about_me_contents_path, class: "nav-element full-divider-right" %>
 
+    <%= link_to "Video", 
+      about_me_contents_path, class: "nav-element" %>
+      <div class="high-divider-right"></div>
+      <div class="low-divider-right"></div>
 
-<img src="<%= @landing_page_photo.link %>" alt="A gradient image fading from light to dark blue" title="Andrada Popan-Dorca">
+    <%= link_to "Photo", 
+      about_me_contents_path, class: "nav-element" %>
+      <div class="high-divider-right"></div>
+      <div class="low-divider-right"></div>
+
+    <%= link_to "Current Projects", 
+      about_me_contents_path, class: "nav-element full-divider-right" %>
+
+    <%= link_to "Contact", 
+      about_me_contents_path, class: "nav-element" %>
+
+    <div id="title-text"> Andrada Popan Dorca </div>
+  </div>
+
+</nav>
