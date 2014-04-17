@@ -30,19 +30,19 @@ $ ->
   ).trigger "resize"
 
 
-  $("#overlay-1").mouseenter ->
+  $("#js-link-1").mouseenter ->
     makeActive $("#overlay-1")
 
-  $("#overlay-2").mouseenter ->
+  $("#js-link-2").mouseenter ->
     makeActive $("#overlay-2")
 
-  $("#overlay-3").mouseenter ->
+  $("#js-link-3").mouseenter ->
     makeActive $("#overlay-3")
 
-  $("#overlay-4").mouseenter ->
+  $("#js-link-4").mouseenter ->
     makeActive $("#overlay-4")
 
-  $("#overlay-5").mouseenter ->
+  $("#js-link-5").mouseenter ->
     makeActive $("#overlay-5")
 
 
