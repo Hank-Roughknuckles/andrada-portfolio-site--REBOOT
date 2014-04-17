@@ -1,26 +1,42 @@
 <%# TODO: make the links point properly %>
 <nav>
-  <div class="landing-page-nav">
-    <%= link_to "About Me", 
-      about_me_contents_path, class: "nav-element full-divider-right" %>
+  <div class="overlay-table">
+    <div class="overlay-row">
+      <!-- <div class="overlay active" id="overlay&#45;none"></div> -->
+      <div class="overlay" id="overlay-1"></div>
+      <div class="overlay" id="overlay-2"></div>
+      <div class="overlay" id="overlay-3"></div>
+      <div class="overlay" id="overlay-4"></div>
+      <div class="overlay" id="overlay-5"></div>
+    </div>
+  </div>
 
-    <%= link_to "Video", 
-      about_me_contents_path, class: "nav-element" %>
-      <div class="high-divider-right"></div>
-      <div class="low-divider-right"></div>
+  <div class="nav-table">
+    <div class="nav-row">
+      <%# <%= image_tag "reveal-none.png", id: "overlay" %>
 
-    <%= link_to "Photo", 
-      about_me_contents_path, class: "nav-element" %>
-      <div class="high-divider-right"></div>
-      <div class="low-divider-right"></div>
+      <!-- <div class="sensor" id="link&#45;1&#45;sensor"></div> -->
+      <%= link_to "About Me", 
+        about_me_contents_path, id: "js-link-1", class: "nav-element" %>
 
-    <%= link_to "Current Projects", 
-      about_me_contents_path, class: "nav-element full-divider-right" %>
+      <!-- <div class="sensor" id="link&#45;2&#45;sensor"></div> -->
+      <%= link_to "Video", 
+        about_me_contents_path, id: "js-link-2", class: "nav-element" %>
 
-    <%= link_to "Contact", 
-      about_me_contents_path, class: "nav-element" %>
+      <!-- <div class="sensor" id="link&#45;3&#45;sensor"></div> -->
+      <%= link_to "Photo", 
+        about_me_contents_path, id: "js-link-3",  class: "nav-element" %>
 
-    <div id="title-text"> Andrada Popan Dorca </div>
+      <!-- <div class="sensor" id="link&#45;4&#45;sensor"></div> -->
+      <%= link_to "Current Projects", 
+        about_me_contents_path, id: "js-link-4",  class: "nav-element" %>
+
+      <!-- <div class="sensor" id="link&#45;5&#45;sensor"></div> -->
+      <%= link_to "Contact", 
+        about_me_contents_path, id: "js-link-5",  class: "nav-element" %>
+
+      <div id="title-text"> Andrada Popan Dorca </div>
+    </div>
   </div>
 
 </nav>

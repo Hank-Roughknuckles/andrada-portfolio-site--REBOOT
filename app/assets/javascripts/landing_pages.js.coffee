@@ -24,8 +24,34 @@ $ ->
 
   #resize the title text when the window size is changed
   $(window).bind("resize", ->
-    preferredRatio = 47 / 1440
+    preferredRatio = 45 / 1440
     resizeText($("#title-text"), preferredRatio)
     return
   ).trigger "resize"
 
+
+  $("#overlay-1").mouseenter ->
+    makeActive $("#overlay-1")
+
+  $("#overlay-2").mouseenter ->
+    makeActive $("#overlay-2")
+
+  $("#overlay-3").mouseenter ->
+    makeActive $("#overlay-3")
+
+  $("#overlay-4").mouseenter ->
+    makeActive $("#overlay-4")
+
+  $("#overlay-5").mouseenter ->
+    makeActive $("#overlay-5")
+
+
+  makeActive = ($target) ->
+    fadeTime = 600
+
+    unless $target.hasClass("active")
+      $(".active").animate({opacity: 0.4}, fadeTime).removeClass("active")
+      $target.animate({opacity: 0}, fadeTime).addClass("active")
+
+    #remove active class from the active and add it to the one being moused
+    #over
