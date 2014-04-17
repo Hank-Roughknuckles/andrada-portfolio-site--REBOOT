@@ -47,10 +47,11 @@ $ ->
 
 
   makeActive = ($target) ->
+    opacityVal = 0.2
     fadeTime = 600
 
     unless $target.hasClass("active")
-      $(".active").animate({opacity: 0.4}, fadeTime).removeClass("active")
+      $(".active").animate({opacity: opacityVal}, fadeTime).removeClass("active")
       $target.animate({opacity: 0}, fadeTime).addClass("active")
 
     #remove active class from the active and add it to the one being moused
