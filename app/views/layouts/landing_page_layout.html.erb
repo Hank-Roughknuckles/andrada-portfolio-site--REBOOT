@@ -11,9 +11,29 @@
 <body>
   <%= yield %>
 
-  <%= render 'shared/layout_sign_in_links' %>
+  <div class="admin-links low right">
+    <% if user_signed_in? %>
+      <div id="edit">
+        <%= link_to "Edit", edit_landing_page_path(@landing_page_photo) %>
+      </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+      <div class="sign_in">
+        <%= link_to "Sign Out", destroy_user_session_path, :method =>
+        :delete %>
+      </div>
+
+      <div id="account_settings">
+        <%= link_to "Account Settings", edit_user_registration_path %>
+      </div>
+
+    <% else %>
+      <div class="sign_in">
+        <%= link_to "Sign In", new_user_session_path %>
+      </div>
+    <% end %>
+  </div>
+
+  <p class="notice low top"><%= notice %></p>
+  <p class="alert low top"><%= alert %></p>
 </body>
 </html>
