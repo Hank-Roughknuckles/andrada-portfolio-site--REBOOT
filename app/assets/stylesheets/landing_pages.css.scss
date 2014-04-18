@@ -75,6 +75,12 @@ nav a {
           transform: translate(-50%,-50%);
 }
 
+
+/*************************************************************************
+/*
+/* Font color
+/*
+/************************************************************************/
 .dark-text {
   color: white
 }
@@ -82,6 +88,8 @@ nav a {
 .light-text {
   color: white
 }
+
+
 /*************************************************************************
 /*
 /* Overlays
@@ -104,22 +112,12 @@ nav a {
 }
 
 .overlay {
-  /* position: absolute; */
   display: table-cell;
   top: 0;
-  /* height: 100%; */
   height: 0;
   width: 20%;
   background-color: black;
-  /* overflow: hidden; */
-  /* background: url('/assets/reveal-none.png') no-repeat center center fixed; */
 
-  /* -webkit-background-size: cover; */
-  /* -moz-background-size: cover; */
-  /* -o-background-size: cover; */
-  /* background-size: cover; */
-
-  /* display: none; */
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -144,31 +142,6 @@ nav a {
   transition: opacity $fadeTime ease-in-out;
 }
 
-/* #overlay-none { */
-  /* background-image: url('/assets/reveal-none.png'); */
-  /* display: block; */
-/* } */
-
-/* #overlay-1 { */
-/*   background-image: url('/assets/reveal-1.png'); */
-/* } */
-/*  */
-/* #overlay-2 { */
-/*   background-image: url('/assets/reveal-2.png'); */
-/* } */
-/*  */
-/* #overlay-3 { */
-/*   background-image: url('/assets/reveal-3.png'); */
-/* } */
-/*  */
-/* #overlay-4 { */
-/*   background-image: url('/assets/reveal-4.png'); */
-/* } */
-/*  */
-/* #overlay-5 { */
-/*   background-image: url('/assets/reveal-5.png'); */
-/* } */
-
 
 /*************************************************************************
 /*
@@ -181,11 +154,8 @@ nav a {
 
 .high-divider-right, .low-divider-right, 
 .high-divider-left, .low-divider-left {
-  /* left: 0; */
-  /* right: 0; */
   width: 20%;
   position: absolute;
-  /* display: inline-block; */
   height: 44%;
 }
 
