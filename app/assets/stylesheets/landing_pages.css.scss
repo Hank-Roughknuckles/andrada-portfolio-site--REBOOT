@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* TODO: color of background is too dark. find out a way to make it more blue so it looks more like the mockup */
 /* TODO: clean up old comments after page is fully functional */
 
 $fadeTime: 0.5s;
@@ -19,25 +18,12 @@ html, body, nav, ul {
   height: 100%;
 }
 
-nav {
-  /* background: url("/assets/landing-page-lines.png") no-repeat center center fixed; */
-  /* -webkit-background-size: cover; */
-  /* -moz-background-size: cover; */
-  /* -o-background-size: cover; */
-  /* background-size: cover; */
-}
-
 body {
   background: url("http://i.imgur.com/vHA8Mke.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-nav {
-  /* width: 100%; */
-  /* display: table; */
 }
   
 nav a {
