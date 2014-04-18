@@ -18,8 +18,7 @@ html, body, nav, ul {
   height: 100%;
 }
 
-body {
-  background: url("http://i.imgur.com/vHA8Mke.jpg") no-repeat center center fixed;
+.bg-img {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -182,15 +181,22 @@ nav a {
 /* Sign-in links and notices
 /*
 /************************************************************************/
-.sign_in, .notice, .alert {
+.admin-links, .notice, .alert {
   position: absolute;
-  bottom: 0.5%;
   padding: 0;
   margin: 0;
+}
+
+.admin-links {
+  text-align: right;
   z-index: 1000;
 }
 
-.sign_in {
+.low {
+  bottom: 0.5%;
+}
+
+.right {
   right: 1%;
 }
 
