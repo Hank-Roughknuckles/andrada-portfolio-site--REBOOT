@@ -3,6 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+
+#***********************************************************************
+#
+# Text-size control
+#
+#***********************************************************************
   ##
   # resizeText()
   #
@@ -30,6 +36,14 @@ $ ->
   ).trigger "resize"
 
 
+
+#***********************************************************************
+#
+# Fade-in and Fade-out
+#
+#***********************************************************************
+
+  #fade-in and fade-out overlay on mouseenter and mouseleave
   $("#js-link-1").mouseenter(->
     makeActive $("#overlay-1")
   ).mouseleave ->
@@ -56,10 +70,21 @@ $ ->
     makeInactive $("#overlay-5")
 
 
+  ##
+  # makeActive
+  # 
+  # remove the "active" class from the currently "active" element in the
+  # DOM and add the "active" class to the passed jquery target
+  ##
   makeActive = ($target) ->
     unless $target.hasClass("active")
       $(".active").removeClass("active")
       $target.addClass("active")
 
+  ##
+  # makeInactive
+  # 
+  # remove the "active" class from the passed jquery target
+  ##
   makeInactive = ($target) ->
     $target.removeClass("active")
