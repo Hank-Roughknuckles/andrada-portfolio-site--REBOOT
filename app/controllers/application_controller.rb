@@ -79,11 +79,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #TODO: add documentation header
   def get_background_css(params)
     active_record_object = params[:active_record_object]
     record_id = params[:record_id]
+    link = params[:link]
 
-    image = active_record_object.find(record_id).background_image
+    if (active_record_object && !record_id) || 
+      (!active_record_object && record_id)
+      raise ArgumentError, "get_background_css must have both :active_record_object and :record_id params"
+    end
+
+    if active_record_object && record_id
+      image = active_record_object.find(record_id).background_image
+    elsif link
+      image = link
+    end
 
     if image != nil
       "background: url(#{image})"
