@@ -8,4 +8,8 @@ describe LandingPagePhoto do
   it "is invalid without a link" do
     FactoryGirl.build(:landing_page_photo, link: nil).should_not be_valid
   end
+
+  it "only accepts valid links" do
+    FactoryGirl.build(:landing_page_photo, link: "www.google.com").should_not be_valid
+  end
 end
