@@ -4,6 +4,9 @@
 
 /* TODO: color of background is too dark. find out a way to make it more blue so it looks more like the mockup */
 /* TODO: clean up old comments after page is fully functional */
+
+$fadeTime: 0.5s;
+
 * {
   margin: 0;
   padding: 0;
@@ -141,7 +144,8 @@ nav a {
   /* position: absolute; */
   display: table-cell;
   top: 0;
-  height: 100%;
+  /* height: 100%; */
+  height: 0;
   width: 20%;
   background-color: black;
   /* overflow: hidden; */
@@ -161,24 +165,21 @@ nav a {
 }
 
 .active {
-  /* -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; */
-  /* filter: alpha(opacity=100); */
-  /* -moz-opacity: 1; */
-  /* -khtml-opacity: 1; */
-  /* opacity: 1; */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+  -moz-opacity: 0.4;
+  -khtml-opacity: 0.4;
+  opacity: 0.4;
 
-  /* height: 100%; */
+  height: 100%;
 }
 
-/* .overlay-fade { */
-  /* transition: height 2s ease-in-out; */
-  /* -moz-transition: height 2s ease-in-out; */
-  /* -webkit-transition: height 2s ease-in-out; */
-  /*  */
-  /* transition: opacity 2s ease-in-out; */
-  /* -moz-transition: opacity 2s ease-in-out; */
-  /* -webkit-transition: opacity 2s ease-in-out; */
-/* } */
+.overlay-fade {
+  transition: height $fadeTime ease-in-out;
+  -moz-transition: height $fadeTime ease-in-out;
+  -webkit-transition: height $fadeTime ease-in-out;
+  transition: opacity $fadeTime ease-in-out;
+}
 
 /* #overlay-none { */
   /* background-image: url('/assets/reveal-none.png'); */
