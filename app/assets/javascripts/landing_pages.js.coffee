@@ -30,29 +30,36 @@ $ ->
   ).trigger "resize"
 
 
-  $("#js-link-1").mouseenter ->
+  $("#js-link-1").mouseenter(->
     makeActive $("#overlay-1")
+  ).mouseleave ->
+    makeInactive $("#overlay-1")
 
-  $("#js-link-2").mouseenter ->
+  $("#js-link-2").mouseenter(->
     makeActive $("#overlay-2")
+  ).mouseleave ->
+    makeInactive $("#overlay-2")
 
-  $("#js-link-3").mouseenter ->
+  $("#js-link-3").mouseenter(->
     makeActive $("#overlay-3")
+  ).mouseleave ->
+    makeInactive $("#overlay-3")
 
-  $("#js-link-4").mouseenter ->
+  $("#js-link-4").mouseenter(->
     makeActive $("#overlay-4")
+  ).mouseleave ->
+    makeInactive $("#overlay-4")
 
-  $("#js-link-5").mouseenter ->
+  $("#js-link-5").mouseenter(->
     makeActive $("#overlay-5")
+  ).mouseleave ->
+    makeInactive $("#overlay-5")
 
 
   makeActive = ($target) ->
-    opacityVal = 0.4
-    fadeTime = 600
-
     unless $target.hasClass("active")
-      $(".active").animate({opacity: 0}, fadeTime).removeClass("active")
-      $target.animate({opacity: opacityVal}, fadeTime).addClass("active")
+      $(".active").removeClass("active")
+      $target.addClass("active")
 
-    #remove active class from the active and add it to the one being moused
-    #over
+  makeInactive = ($target) ->
+    $target.removeClass("active")
