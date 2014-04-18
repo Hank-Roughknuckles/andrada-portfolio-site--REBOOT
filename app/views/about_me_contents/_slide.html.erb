@@ -1,5 +1,5 @@
 <%# The contents of each slide in the slider %>
-<li class="<%= @is_preview ? "slide_preview" : "slide" %>" style="<%= get_background_css AboutMeContent, content.id %>;
+<li class="<%= @is_preview ? "slide_preview" : "slide" %>" style="<%= get_background_css active_record_object: AboutMeContent, record_id: content.id %>;
   <%= "display: none" if content.id != @active_content_id %>">
 
   <a href="#">

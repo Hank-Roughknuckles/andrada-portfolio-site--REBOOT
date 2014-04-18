@@ -79,7 +79,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_background_css(active_record_object, record_id)
+  def get_background_css(params)
+    active_record_object = params[:active_record_object]
+    record_id = params[:record_id]
+
     image = active_record_object.find(record_id).background_image
 
     if image != nil
