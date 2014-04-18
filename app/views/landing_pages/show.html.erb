@@ -1,12 +1,15 @@
 <%# TODO: make the links point properly %>
-<nav class="bg-img" style="<%= get_background_css link: @landing_page_photo.link %> no-repeat center center fixed">
+<nav>
+  <img class="bg-img" src="<%= @landing_page_photo.link %>">
 
   <div id="title-text" class="top"> Andrada Popan Dorca </div>
 
   <div class="nav-table top">
     <div class="nav-row">
       <%= link_to "About Me", 
-        about_me_contents_path, id: "js-link-1", class: "nav-element full-divider-right" %>
+        about_me_contents_path, 
+        id: "js-link-1", 
+        class: "nav-element full-divider-right" %>
 
       <div class="high-divider-right"></div>
       <div class="low-divider-right"></div>
