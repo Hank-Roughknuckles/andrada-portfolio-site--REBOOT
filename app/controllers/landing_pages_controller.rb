@@ -1,5 +1,5 @@
 class LandingPagesController < ApplicationController
-  layout "landing_page_layout"
+  layout "landing_page_layout", except: :edit
   before_action :set_photo, except: :update
 
   before_filter :authorize, except: :show
