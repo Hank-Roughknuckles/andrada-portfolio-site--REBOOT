@@ -1,0 +1,25 @@
+<h1>Listing video_works</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @video_works.each do |video_work| %>
+      <tr>
+        <td><%= link_to 'Show', video_work %></td>
+        <td><%= link_to 'Edit', edit_video_work_path(video_work) %></td>
+        <td><%= link_to 'Destroy', video_work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video work', new_video_work_path %>

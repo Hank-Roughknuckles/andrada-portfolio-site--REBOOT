@@ -1,4 +1,5 @@
 AndradaPortfolioSite::Application.routes.draw do
+
   devise_for :users, :skip => [:registrations]                                          
   as :user do
     get 'users/edit' => 'devise/registrations#edit', 
@@ -14,6 +15,7 @@ AndradaPortfolioSite::Application.routes.draw do
   resources :landing_pages
   resources :about_me_contents, path: "about_me"
   resources :showreel
+  resources :video_works
   resources :contact
   resources :grid_positions
 
