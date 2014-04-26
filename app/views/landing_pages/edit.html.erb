@@ -4,7 +4,7 @@
 
 <%= form_for @landing_page_photo, 
   url: landing_page_path(@landing_page_photo) do |f| %>
-  <%= f.label :link %>
+  <%= f.label :link, "Background Image Link" %>
   <%= f.text_field :link %>
   <%= f.submit "Save" %>
 <% end %>
