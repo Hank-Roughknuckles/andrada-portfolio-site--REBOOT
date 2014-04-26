@@ -1,9 +1,12 @@
 AndradaPortfolioSite::Application.routes.draw do
   devise_for :users, :skip => [:registrations]                                          
-    as :user do
-      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
-      put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'            
-    end
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', 
+        :as => 'edit_user_registration'    
+    put 'users/:id' => 'devise/registrations#update', 
+        :as => 'user_registration'            
+  end
+
   root to: 'landing_pages#show'
 
   resource :sessions
@@ -11,8 +14,6 @@ AndradaPortfolioSite::Application.routes.draw do
   resources :landing_pages
   resources :about_me_contents, path: "about_me"
   resources :showreel
-  resources :works
-  resources :current_projects
   resources :contact
   resources :grid_positions
 
