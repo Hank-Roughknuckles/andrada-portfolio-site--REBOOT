@@ -182,6 +182,14 @@ describe "VideoCollections" do
     end
   end
 
+  describe "The edit page" do
+    describe "when not logged in" do
+      #should redirect to landing page
+    end
+    describe "when logged in" do
+      #describe the page
+    end
+  end
   describe "The new page" do
     describe "when not logged in" do
       #test for lack of "new project" button
