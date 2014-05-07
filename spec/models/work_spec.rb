@@ -35,4 +35,9 @@ describe Work do
     before { @work.description = "a" * 401 }
     it { should_not be_valid }
   end
+
+  describe "when tile_image_link has the wrong format" do
+    before { @work.tile_image_link = "google.com" }
+    it { should_not be_valid }
+  end
 end
