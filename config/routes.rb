@@ -12,10 +12,11 @@ AndradaPortfolioSite::Application.routes.draw do
 
   resource :sessions
   resources :nav_items
-  resources :landing_pages
+  resources :landing_pages, only: [:show, :edit, :update]
   resources :about_me_contents, path: "about_me"
   resources :showreel
-  resources :video_works
+  resources :video_works, only: [:new, :edit, :update, :destroy]
+  resources :video_collections, path: "video"
   resources :contact
   resources :grid_positions
 

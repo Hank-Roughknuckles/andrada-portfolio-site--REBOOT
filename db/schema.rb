@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414111950) do
+ActiveRecord::Schema.define(version: 20140505075745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20140414111950) do
     t.string   "background_image_content_type"
     t.integer  "background_image_file_size"
     t.datetime "background_image_updated_at"
+  end
+
+  create_table "collections", force: true do |t|
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "ancestry"
+    t.string   "name"
+    t.string   "tile_image_link"
   end
 
   create_table "contacts", force: true do |t|
@@ -71,5 +80,14 @@ ActiveRecord::Schema.define(version: 20140414111950) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "works", force: true do |t|
+    t.string "header"
+    t.string "description"
+    t.string "work_link"
+    t.string "tile_image_link"
+    t.string "type"
+    t.string "folder_id"
+  end
 
 end

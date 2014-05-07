@@ -4,7 +4,7 @@ class VideoWorksController < ApplicationController
   # GET /video_works
   # GET /video_works.json
   def index
-    @video_works = VideoWork.all
+    @video_collections = VideoCollection.roots
   end
 
   # GET /video_works/1
@@ -28,11 +28,15 @@ class VideoWorksController < ApplicationController
 
     respond_to do |format|
       if @video_work.save
-        format.html { redirect_to @video_work, notice: 'Video work was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @video_work }
+        format.html { redirect_to @video_work, 
+                      notice: 'Video work was successfully created.' }
+        format.json { render action: 'show', 
+                      status: :created, 
+                      location: @video_work }
       else
         format.html { render action: 'new' }
-        format.json { render json: @video_work.errors, status: :unprocessable_entity }
+        format.json { render json: @video_work.errors, 
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +46,13 @@ class VideoWorksController < ApplicationController
   def update
     respond_to do |format|
       if @video_work.update(video_work_params)
-        format.html { redirect_to @video_work, notice: 'Video work was successfully updated.' }
+        format.html { redirect_to @video_work, 
+                      notice: 'Video work was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @video_work.errors, status: :unprocessable_entity }
+        format.json { render json: @video_work.errors, 
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -67,7 +73,8 @@ class VideoWorksController < ApplicationController
       @video_work = VideoWork.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the 
+    # white list through.
     def video_work_params
       params[:video_work]
     end

@@ -1,0 +1,8 @@
+<% if params[:action] =~ /show/ %>
+  &gt; <%= link_to "Gallery", controller: params[:controller], 
+                              action: "index" %>
+
+  <% for folder in collection.ancestors %>
+    &gt; <%= link_to folder.name, folder %>
+  <% end %>
+<% end %>

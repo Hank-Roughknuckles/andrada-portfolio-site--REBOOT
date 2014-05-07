@@ -43,10 +43,6 @@ describe "LandingPage" do
 
       it { should have_css ".bg-img" }
     end
-
-    describe "links in the page" do
-      it "points to the proper page"
-    end
   end
 
   describe "The Edit view" do

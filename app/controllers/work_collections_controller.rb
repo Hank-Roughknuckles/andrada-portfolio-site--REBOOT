@@ -1,0 +1,2 @@
+class WorkCollectionsController < ApplicationController
+end

@@ -9,21 +9,29 @@
 </head>
 
 <body>
-<div class="overlay"></div> <!-- used when a tile is clicked -->
+  <div class="overlay"></div> <!-- used when a tile is clicked -->
 
-<div class="container">
-  <div class="secondary_container">
-    <%= render 'header' %>
+  <div class="container">
+    <div class="secondary_container">
+      <%= render 'header' %>
 
-    <div class="main_content">
-      <%= yield %>
+      <div class="main_content">
+        <div class="breadcrumbs">
+          <%= link_to "Andrada Popan Dorca", root_path %>
+          <%= yield(:breadcrumbs) %>
+        </div>
+
+        <%= yield %>
+      </div>
+
+      <%= render 'shared/layout_sign_in_links' %>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     </div>
-
-    <%= render 'shared/layout_sign_in_links' %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </div>
-</div>
+
+  <%= debug(params) if Rails.env.development? %>
+
 </body>
 </html>

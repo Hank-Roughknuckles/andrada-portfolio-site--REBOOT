@@ -36,6 +36,9 @@ gem 'devise'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+#Use Ancestry to allow for tree based navigation
+gem 'ancestry'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 

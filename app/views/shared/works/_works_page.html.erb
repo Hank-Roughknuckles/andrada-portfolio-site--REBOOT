@@ -1,0 +1,16 @@
+<h1>Video Works</h1>
+
+<% content_for :breadcrumbs do %>
+  <%= render "shared/works/breadcrumbs", collection: @video_collection %>
+<% end %>
+
+<div class="works">
+  <%= render 'shared/works/collections_tiles', collections: collections %>
+  <%= render 'shared/works/works_tiles', works: works %>
+</div>
+
+
+<br>
+<%= link_to 'New Video collection', new_video_collection_path %>
+
+<%= render 'shared/works/back_button', video_collection: @video_collection %>
