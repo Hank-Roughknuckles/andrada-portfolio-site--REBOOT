@@ -35,7 +35,6 @@ describe "VideoCollections" do
   describe "The Index Page" do
     it { should have_title "Video" } 
     it { should have_content "Video" }
-    
 
     #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     # Top level works/collections
@@ -77,6 +76,8 @@ describe "VideoCollections" do
     #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     describe "the inside of the parent-collection" do
       before { click_link parent_collection.name }
+
+      it { should have_content parent_collection.name }
 
       describe "the back button" do
         let(:back_button_xpath) do
@@ -142,28 +143,24 @@ describe "VideoCollections" do
           end
 
           describe "the breadcrumbs" do
-            describe "the breadcrumbs" do
-              before { print page.html }
+            it "should have breadcrumbs" do
+              expect(page).to have_xpath(%Q(
+                //div[@class='breadcrumbs']
+                  //a[@href="#{root_path}"]
+                )
+              )
+              expect(page).to have_xpath(%Q(
+                //div[@class='breadcrumbs']
+                  //a[@href="#{video_collections_path}"]
+                )
+              )
 
-              it "should have breadcrumbs" do
-                expect(page).to have_xpath(%Q(
-                  //div[@class='breadcrumbs']
-                    //a[@href="#{root_path}"]
-                  )
+              expect(page).to have_xpath(%Q(
+                //div[@class='breadcrumbs']
+                  //a[@href=
+                    "#{video_collection_path(child_collection.parent)}"]
                 )
-                expect(page).to have_xpath(%Q(
-                  //div[@class='breadcrumbs']
-                    //a[@href="#{video_collections_path}"]
-                  )
-                )
-
-                expect(page).to have_xpath(%Q(
-                  //div[@class='breadcrumbs']
-                    //a[@href=
-                      "#{video_collection_path(child_collection.parent)}"]
-                  )
-                )
-              end
+              )
             end
           end
         end
