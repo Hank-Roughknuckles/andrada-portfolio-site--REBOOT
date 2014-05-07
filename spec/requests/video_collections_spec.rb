@@ -79,13 +79,6 @@ describe "VideoCollections" do
 
       it { should have_content parent_collection.name }
 
-      describe "the back button" do
-        let(:back_button_xpath) do
-          "//a[@href=\"#{video_collections_path}\"]"
-        end
-        it { should have_xpath back_button_xpath }
-      end
-
       describe "the child collection" do
         let(:child_image_xpath) do
           "//img[@src=\"#{child_collection.tile_image_link}\"]"
@@ -120,13 +113,6 @@ describe "VideoCollections" do
         #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         describe "inside the child collection" do
           before { click_link child_collection.name }
-
-          describe "the back button" do
-            let(:back_button_xpath) do
-              "//a[@href=\"#{video_collection_path(child_collection.parent)}\"]"
-            end
-            it { should have_xpath back_button_xpath }
-          end
 
           describe "the works inside the child collection" do
             let(:work_image_xpath) do
