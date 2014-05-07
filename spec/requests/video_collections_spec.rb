@@ -22,11 +22,6 @@ describe "VideoCollections" do
     FactoryGirl.create(:video_work, folder_id: child_collection.id) 
   end
 
-  # before do
-  #   parent_collection.parent = nil
-  #   child_collection.parent = parent_collection
-  # end
-
   before do
     visit root_path 
     click_link "Video"
@@ -89,8 +84,6 @@ describe "VideoCollections" do
         end
         it { should have_xpath back_button_xpath }
       end
-
-      it "should not show the new work link unless logged in"
 
       describe "the child collection" do
         let(:child_image_xpath) do
@@ -189,6 +182,14 @@ describe "VideoCollections" do
           it { should_not have_selector "#work-#{top_level_work.id}" }
         end
       end
+    end
+  end
+
+  describe "The new page" do
+    describe "when not logged in" do
+      #test for lack of "new project" button
+    end
+    describe "when logged in" do
     end
   end
 end
