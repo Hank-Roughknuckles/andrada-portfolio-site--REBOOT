@@ -1,5 +1,6 @@
 class VideoCollectionsController < ApplicationController
   before_action :set_video_collection, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:index, :show]
   helper :all
 
   # GET /video_collections
@@ -46,12 +47,22 @@ class VideoCollectionsController < ApplicationController
   # PATCH/PUT /video_collections/1.json
   def update
     respond_to do |format|
-      if @video_collection.update(video_collection_params)
-        format.html { redirect_to @video_collection, notice: 'Video collection was successfully updated.' }
+      if @video_collection.update_attributes!(video_collection_params)
+
+        if @video_collection.parent != nil
+          address = @video_collection.parent
+        else
+          address = video_collections_path
+        end
+
+        format.html { redirect_to address,
+                      notice: 'Video collection was successfully updated.' }
         format.json { head :no_content }
+
       else
         format.html { render action: 'edit' }
-        format.json { render json: @video_collection.errors, status: :unprocessable_entity }
+        format.json { render json: @video_collection.errors, 
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -74,6 +85,6 @@ class VideoCollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_collection_params
-      params[:video_collection]
+      params[:video_collection].permit(:parent_id, :name, :tile_image_link)
     end
 end

@@ -6,11 +6,13 @@ describe "VideoCollections" do
 
   FactoryGirl.create(:landing_page_photo)
 
+  let!(:user) { FactoryGirl.create(:user) }
   let!(:parent_collection) do 
-    FactoryGirl.create(:video_collection) 
+    FactoryGirl.create(:video_collection, name: "Parent Collection") 
   end
   let!(:child_collection) do 
-    FactoryGirl.create(:video_collection, parent: parent_collection) 
+    FactoryGirl.create(:video_collection, parent: parent_collection, 
+                                          name: "Child Collection") 
   end
   let!(:top_level_work) do 
     FactoryGirl.create(:video_work, folder_id: nil)
@@ -35,6 +37,52 @@ describe "VideoCollections" do
   describe "The Index Page" do
     it { should have_title "Video" } 
     it { should have_content "Video" }
+
+    #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    # "Create" buttons
+    #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    describe "when signed out" do
+      before do
+        logout user
+        visit root_path
+        click_link "Video"
+      end 
+
+      it "shouldn't have the option to make new works or collections" do  
+        #new collection
+        expect(page).not_to have_xpath( %Q(
+          //a[@href="#{new_video_collection_path}"]
+          )
+        )
+        #new work
+        expect(page).not_to have_xpath( %Q(
+          //a[@href="#{new_video_work_path}"]
+          )
+        )
+      end
+      it "shouldn't have the option to destroy works or collections" do
+        expect(page).not_to have_link( "Delete" )
+      end
+    end
+
+    describe "when signed in" do
+      before do
+        login_as user
+        visit root_path
+        click_link "Video"
+      end 
+
+      it "should have the option to make new works or collections" do  
+        expect(page).to have_xpath( %Q(
+          //a[@href="#{new_video_collection_path}"]
+          )
+        )
+        expect(page).to have_xpath( %Q(
+          //a[@href="#{new_video_work_path}"]
+          )
+        )
+      end
+    end
 
     #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     # Top level works/collections
@@ -168,18 +216,78 @@ describe "VideoCollections" do
     end
   end
 
+  ########################################################################
+  #
+  # The Edit View
+  #
+  ########################################################################
   describe "The edit page" do
     describe "when not logged in" do
-      #should redirect to landing page
+      before do
+        logout user
+        visit edit_video_collection_path(parent_collection)
+      end
+      it { should have_content "Please log in" }
     end
+
     describe "when logged in" do
-      #describe the page
+      before do
+        login_as user
+        visit edit_video_collection_path(parent_collection)
+      end
+
+      it { should have_field "Name" }
+      it { should have_field "Parent" }
+      it { should have_field "image" }
+      it { should have_content "Reload" }
+      it { should have_xpath(
+            %Q(//img[ @src="#{parent_collection.tile_image_link}"])
+      )}
+      it { should_not have_select('video_collection_parent_id', 
+                                  options: [child_collection.name]) }
+
+      #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+      # Editing with valid information
+      #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+      describe "editing a collection" do
+        describe "with valid information" do
+          let!(:new_parent)     { "No Parent" }
+          let!(:new_name)       { "Altered Name" }
+          let!(:new_image)      { "http://www.asfim.ma/upload/CaRtOuChE_3/Image_3_160.jpg" }
+
+          before do
+            visit edit_video_collection_path(child_collection)
+            select(new_parent,        from: "video_collection_parent_id")
+            fill_in "Name",           with:   new_name
+            fill_in "image", with:   new_image
+            click_button "Save"
+          end
+          
+          specify { expect(child_collection.reload.name).to eq new_name}
+          specify { expect(child_collection.reload.parent_id).to eq nil }
+          specify { expect(child_collection.reload.tile_image_link).to eq new_image }
+          it { should have_xpath "//img[@src=\"#{new_image}\"]" }
+        end
+      end
+
     end
   end
+
+  ########################################################################
+  #
+  # The New View
+  #
+  ########################################################################
   describe "The new page" do
     describe "when not logged in" do
-      #test for lack of "new project" button
+      before do
+        logout user
+        visit edit_video_collection_path parent_collection
+      end
+
+      it { should have_content "Please log in" }
     end
+
     describe "when logged in" do
     end
   end

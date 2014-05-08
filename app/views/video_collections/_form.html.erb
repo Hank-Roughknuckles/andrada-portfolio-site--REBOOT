@@ -1,7 +1,9 @@
 <%= form_for(@video_collection) do |f| %>
+
   <% if @video_collection.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@video_collection.errors.count, "error") %> prohibited this video_collection from being saved:</h2>
+      <h2><%= pluralize(@video_collection.errors.count, "error") %> 
+        prohibited this video collection from being saved:</h2>
 
       <ul>
       <% @video_collection.errors.full_messages.each do |msg| %>
@@ -11,7 +13,43 @@
     </div>
   <% end %>
 
+
   <div class="actions">
-    <%= f.submit %>
+
+    <%# The parent for the collection %>
+    <p>
+      <%= f.label :parent_id, "Parent Collection" %>
+      <select id="video_collection_parent_id" 
+              name="video_collection[parent_id]">
+        <option value="">No Parent</option>
+
+        <% VideoCollection.all.each do |collection| %> 
+          <% if collection != @video_collection and 
+             !@video_collection.children.include? collection %>
+
+            <option value="<%= collection.id %>">
+              <%= collection.name %>
+            </option>
+          <% end %> 
+        <% end %>
+      </select>
+    </p>
+
+
+    <p>
+      <%= f.label         :name %>
+      <%= f.text_field    :name %>
+    </p>
+
+    <p>
+      <%= f.label         :tile_image_link, "Grid image link" %>
+      <%= f.text_field    :tile_image_link %>
+      <button id="reload-preview">Reload</button>
+
+      <%= image_tag @video_collection.tile_image_link, 
+                    class: "tile_preview" %>
+    </p>
+
+    <%= f.submit "Save" %>
   </div>
 <% end %>
