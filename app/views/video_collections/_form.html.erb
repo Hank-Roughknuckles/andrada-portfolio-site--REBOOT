@@ -44,7 +44,7 @@
     <p>
       <%= f.label         :tile_image_link, "Grid image link" %>
       <%= f.text_field    :tile_image_link %>
-      <button id="reload-preview">Reload</button>
+      <button class="reload" id="reload-grid-preview">Reload</button>
 
       <%= image_tag @video_collection.tile_image_link, 
                     class: "tile_preview" %>

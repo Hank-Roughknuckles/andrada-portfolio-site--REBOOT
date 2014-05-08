@@ -1,0 +1,67 @@
+<h1>Edit <%= @video_work.header %></h1>
+
+
+<%= form_for @video_work do |f| %>
+
+  <% if @video_work.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video_work.errors.count, "error") %> 
+        prohibited this work from being saved:</h2>
+
+      <ul>
+      <% @video_work.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+
+    <%# The parent collection to put the work in %>
+    <p>
+      <%= f.label :folder_id, "Parent Collection", 
+      title: "Which collection (if any) you would like the" + 
+             " work to go into" %>
+
+      <select id="video_work_folder_id" 
+              name="video_work[folder_id]">
+        <option value="">No Collection</option>
+
+        <% VideoCollection.all.each do |collection| %> 
+          <option value="<%= collection.id %>">
+            <%= collection.name %>
+          </option>
+        <% end %>
+      </select>
+    </p>
+
+
+    <p>
+      <%= f.label       :header, "Header (max 50 chars)" %>
+      <%= f.text_field  :header, input_html: { maxlength: 50 } %>
+    </p>
+
+    <p>
+      <%= f.label       :description, "Description (max 400 chars)" %>
+      <%= f.text_area   :description, input_html: {maxlength: 400} %>
+    </p>
+
+    <p>
+      <%= f.label       :work_link, "Link to work" %>
+      <%= f.text_field  :work_link %>
+      <button class="reload" id="reload-work-preview">Reload</button>
+    </p>
+
+    <p>
+      <%= f.label       :tile_image_link, "Grid image link" %>
+      <%= f.text_field  :tile_image_link %>
+      <button class="reload" id="reload-grid-preview">Reload</button>
+
+      <%= image_tag @video_work.tile_image_link, class: "tile_preview" %>
+    </p>
+
+    <%= f.submit "Save" %>
+  </div>
+<% end %>

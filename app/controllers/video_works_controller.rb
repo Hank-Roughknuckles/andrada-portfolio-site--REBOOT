@@ -1,5 +1,6 @@
 class VideoWorksController < ApplicationController
   before_action :set_video_work, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize, :except => :show
 
   # GET /video_works
   # GET /video_works.json
@@ -76,6 +77,7 @@ class VideoWorksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the 
     # white list through.
     def video_work_params
-      params[:video_work]
+      params[:video_work].permit(:folder_id, :header, :description,
+                                 :work_link, :tile_image_link)
     end
 end
