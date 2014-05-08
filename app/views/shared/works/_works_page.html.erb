@@ -1,5 +1,3 @@
-<h1>Video Works</h1>
-
 <% content_for :breadcrumbs do %>
   <%= render "shared/works/breadcrumbs", collection: @video_collection %>
 <% end %>
@@ -15,4 +13,8 @@
 
 
 <br>
-<%= link_to 'New Video collection', new_video_collection_path %>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Video Collection', new_video_collection_path %>
+  <%= link_to 'New Video Entry', new_video_work_path %>
+<% end %>
