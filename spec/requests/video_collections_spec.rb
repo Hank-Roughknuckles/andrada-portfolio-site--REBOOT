@@ -262,6 +262,7 @@ describe "VideoCollections" do
             fill_in "Name",           with:   new_name
             fill_in "image", with:   new_image
             click_button "Save"
+            print_it
           end
           
           specify { expect(child_collection.reload.name).to eq new_name}
@@ -340,9 +341,9 @@ describe "VideoCollections" do
                text: "Tile image link is invalid" }
         end
 
-        #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         # Creating with valid information
-        #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         describe "with valid information" do
           let!(:new_name) { "a collection with no parent" }
           let!(:new_image) { "http://i.imgur.com/kWIYqOg.png" }
@@ -350,7 +351,6 @@ describe "VideoCollections" do
             fill_in "Name", with: new_name
             fill_in "image", with: new_image
             click_button "Save"
-            print page.html
           end
           
           it { should have_content "New Video Entry" }
