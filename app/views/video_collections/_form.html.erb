@@ -18,21 +18,37 @@
 
     <%# The parent for the collection %>
     <p>
+
+    <% if @video_collection.new_record? %>
       <%= f.label :parent_id, "Parent Collection" %>
       <select id="video_collection_parent_id" 
               name="video_collection[parent_id]">
+
         <option value="">No Parent</option>
-
         <% VideoCollection.all.each do |collection| %> 
-          <% if collection != @video_collection and 
-             !@video_collection.children.include? collection %>
-
-            <option value="<%= collection.id %>">
-              <%= collection.name %>
-            </option>
-          <% end %> 
+          <option value="<%= collection.id %>">
+            <%= collection.name %>
+          </option>
         <% end %>
+
       </select>
+    <% else %>
+      <%= f.label :parent_id, "Parent Collection" %>
+        <select id="video_collection_parent_id" 
+                name="video_collection[parent_id]">
+          <option value="">No Parent</option>
+
+          <% VideoCollection.all.each do |collection| %> 
+            <% if collection != @video_collection and 
+               !@video_collection.children.include? collection %>
+
+              <option value="<%= collection.id %>">
+                <%= collection.name %>
+              </option>
+            <% end %> 
+          <% end %>
+        </select>
+    <% end %>
     </p>
 
 

@@ -65,7 +65,6 @@ describe "VideoWorks" do
           fill_in "image link", with: "https://www.youtube.com/watch?v=0NbBjNiw4tk"
           fill_in "work", with: "google.com"
           click_button "Save"
-          print page.html
         end
 
         it { should have_selector "#error_explanation", 

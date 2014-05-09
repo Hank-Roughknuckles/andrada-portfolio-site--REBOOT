@@ -261,7 +261,6 @@ describe "VideoCollections" do
             select(new_parent,        from: "video_collection_parent_id")
             fill_in "Name",           with:   new_name
             fill_in "image", with:   new_image
-            print page.html 
             click_button "Save"
           end
           
@@ -281,7 +280,6 @@ describe "VideoCollections" do
           select("No Parent",       from: "video_collection_parent_id")
           click_button "Save"
           visit video_collections_path
-          print page.html
           click_link "collection-#{child_collection.id}"
         end
 
@@ -300,17 +298,65 @@ describe "VideoCollections" do
   # The New View
   #
   ########################################################################
-  describe "The new page" do
+  describe "The new view" do
     describe "when not logged in" do
       before do
         logout user
-        visit edit_video_collection_path parent_collection
+        visit new_video_collection_path parent_collection
       end
 
       it { should have_content "Please log in" }
     end
 
     describe "when logged in" do
+      before do
+        login_as user
+        visit new_video_collection_path
+      end
+
+      describe "page contents" do
+        it { should have_field "Name" }
+        it { should have_field "Parent" }
+        it { should have_select('video_collection_parent_id', 
+                                options: ["No Parent", 
+                                          parent_collection.name, 
+                                          child_collection.name]) 
+        }
+        it { should have_field "image" }
+        it { should have_content "Reload" }
+      end
+
+      describe "the creation process" do
+        describe "with invalid information" do
+          before do
+            fill_in "Name", with: "a"*51
+            fill_in "image", with: "www.youtube.com/watch?v=WDKldgwuzjg"
+            click_button "Save"
+          end
+
+          it { should have_selector "#error_explanation", 
+               text: "Name is too long" }
+          it { should have_selector "#error_explanation", 
+               text: "Tile image link is invalid" }
+        end
+
+        #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        # Creating with valid information
+        #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        describe "with valid information" do
+          let!(:new_name) { "a collection with no parent" }
+          let!(:new_image) { "http://i.imgur.com/kWIYqOg.png" }
+          before do
+            fill_in "Name", with: new_name
+            fill_in "image", with: new_image
+            click_button "Save"
+            print page.html
+          end
+          
+          it { should have_content "New Video Entry" }
+          it { should have_content new_name }
+        end
+      end
     end
   end
 end

@@ -15,6 +15,11 @@
 <br>
 
 <% if user_signed_in? %>
-  <%= link_to 'New Video Collection', new_video_collection_path %>
-  <%= link_to 'New Video Entry', new_video_work_path %>
+  <% if request.original_uri =~ /video/ %>
+    collection_destination = new_video_collection_path
+    work_destination = new_video_work_path
+  <% end %>
+
+  <%= link_to 'New Video Collection', collection_destination %>
+  <%= link_to 'New Video Entry', work_destination %>
 <% end %>
