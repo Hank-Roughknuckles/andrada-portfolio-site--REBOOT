@@ -1,5 +1,5 @@
 class VideoWorksController < ApplicationController
-  before_action :set_video_work, only: [:show, :edit, :update, :destroy]
+  before_action :set_video_work, only: [:new, :edit, :update, :destroy]
   before_filter :authorize, :except => :show
 
   # GET /video_works
@@ -29,7 +29,7 @@ class VideoWorksController < ApplicationController
 
     respond_to do |format|
       if @video_work.save
-        format.html { redirect_to @video_work, 
+        format.html { redirect_to video_collections_path, 
                       notice: 'Video work was successfully created.' }
         format.json { render action: 'show', 
                       status: :created, 
@@ -46,8 +46,14 @@ class VideoWorksController < ApplicationController
   # PATCH/PUT /video_works/1.json
   def update
     respond_to do |format|
-      if @video_work.update(video_work_params)
-        format.html { redirect_to @video_work, 
+      if @video_work.update_attributes(video_work_params)
+
+        if @video_work.folder_id == nil
+          address = video_collections_path
+        else
+          address = video_collections_path(@video_work.folder_id)
+        end
+        format.html { redirect_to video_collections_path, 
                       notice: 'Video work was successfully updated.' }
         format.json { head :no_content }
       else

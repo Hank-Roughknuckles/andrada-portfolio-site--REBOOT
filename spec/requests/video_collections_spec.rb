@@ -260,6 +260,7 @@ describe "VideoCollections" do
             select(new_parent,        from: "video_collection_parent_id")
             fill_in "Name",           with:   new_name
             fill_in "image", with:   new_image
+            print page.html 
             click_button "Save"
           end
           

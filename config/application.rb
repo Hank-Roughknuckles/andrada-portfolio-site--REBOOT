@@ -22,5 +22,8 @@ module AndradaPortfolioSite
     #
     config.assets.initialize_on_precompile = false
     config.i18n.enforce_available_locales = true
+
+    config.header_max_length = 50
+    config.description_max_length = 400
   end
 end
