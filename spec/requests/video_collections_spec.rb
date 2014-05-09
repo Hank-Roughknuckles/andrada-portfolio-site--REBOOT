@@ -21,7 +21,8 @@ describe "VideoCollections" do
     FactoryGirl.create(:video_work, folder_id: parent_collection.id) 
   end
   let!(:work_in_child_collection) do 
-    FactoryGirl.create(:video_work, folder_id: child_collection.id) 
+    FactoryGirl.create(:video_work, folder_id: child_collection.id,
+                                    tile_image_link: "http://i.kinja-img.com/gawker-media/image/upload/s--5JnGzvw3--/c_fit,fl_progressive,q_80,w_636/714259831889653140.jpg") 
   end
 
   before do
@@ -268,6 +269,26 @@ describe "VideoCollections" do
           specify { expect(child_collection.reload.parent_id).to eq nil }
           specify { expect(child_collection.reload.tile_image_link).to eq new_image }
           it { should have_xpath "//img[@src=\"#{new_image}\"]" }
+        end
+      end
+      
+      #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+      # Moving a collection to be inside another
+      #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+      describe "moving a collection" do
+        before do
+          visit edit_video_collection_path(child_collection)
+          select("No Parent",       from: "video_collection_parent_id")
+          click_button "Save"
+          visit video_collections_path
+          print page.html
+          click_link "collection-#{child_collection.id}"
+        end
+
+        it "should still have all its content" do
+          expect(page).to have_xpath(
+            "//img[@src=\"#{work_in_child_collection.tile_image_link}\"]"
+          )
         end
       end
 
