@@ -27,7 +27,7 @@
               name="video_collection[parent_id]">
 
         <option value="">No Parent</option>
-        <% VideoCollection.all.each do |collection| %> 
+        <% collection.class.all.each do |collection| %> 
           <option value="<%= collection.id %>">
             <%= collection.name %>
           </option>
@@ -40,7 +40,7 @@
                 name="video_collection[parent_id]">
           <option value="">No Parent</option>
 
-          <% VideoCollection.all.each do |collection| %> 
+          <% collection.class.all.each do |collection| %> 
             <% if collection != collection and 
                !collection.children.include? collection %>
 

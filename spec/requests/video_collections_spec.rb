@@ -262,7 +262,6 @@ describe "VideoCollections" do
             fill_in "Name",           with:   new_name
             fill_in "image", with:   new_image
             click_button "Save"
-            print_it
           end
           
           specify { expect(child_collection.reload.name).to eq new_name}
