@@ -15,10 +15,16 @@
 <br>
 
 <% if user_signed_in? %>
-  <% if request.original_uri =~ /video/ %>
-    collection_destination = new_video_collection_path
-    work_destination = new_video_work_path
+
+  <% if params[:controller] =~ /video/ %>
+    <% collection_destination = new_video_collection_path %>
+    <% work_destination = new_video_work_path %>
   <% end %>
+  <% if params[:controller] =~ /photo/ %>
+    <% collection_destination = new_photo_collection_path %>
+    <% work_destination = new_photo_work_path %>
+  <% end %>
+
 
   <%= link_to 'New Video Collection', collection_destination %>
   <%= link_to 'New Video Entry', work_destination %>

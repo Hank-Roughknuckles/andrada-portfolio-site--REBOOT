@@ -1,12 +1,12 @@
-<%= form_for(@video_collection) do |f| %>
+<%= form_for(collection) do |f| %>
 
-  <% if @video_collection.errors.any? %>
+  <% if collection.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@video_collection.errors.count, "error") %> 
+      <h2><%= pluralize(collection.errors.count, "error") %> 
         prohibited this video collection from being saved:</h2>
 
       <ul>
-      <% @video_collection.errors.full_messages.each do |msg| %>
+      <% collection.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -16,10 +16,12 @@
 
   <div class="actions">
 
+    <%# TODO: Generalize this and make it able to server many types of
+      controllers and models %>
     <%# The parent for the collection %>
     <p>
 
-    <% if @video_collection.new_record? %>
+    <% if collection.new_record? %>
       <%= f.label :parent_id, "Parent Collection" %>
       <select id="video_collection_parent_id" 
               name="video_collection[parent_id]">
@@ -39,8 +41,8 @@
           <option value="">No Parent</option>
 
           <% VideoCollection.all.each do |collection| %> 
-            <% if collection != @video_collection and 
-               !@video_collection.children.include? collection %>
+            <% if collection != collection and 
+               !collection.children.include? collection %>
 
               <option value="<%= collection.id %>">
                 <%= collection.name %>
@@ -62,7 +64,7 @@
       <%= f.text_field    :tile_image_link %>
       <button class="reload" id="reload-grid-preview">Reload</button>
 
-      <%= image_tag @video_collection.tile_image_link, 
+      <%= image_tag collection.tile_image_link, 
                     class: "tile_preview" %>
     </p>
 

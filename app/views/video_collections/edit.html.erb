@@ -1,6 +1,7 @@
 <h1>Editing video_collection</h1>
 
-<%= render 'form' %>
+<%= render  'shared/works/collection_form', 
+            collection: @video_collection %>
 
 <%= link_to 'Show', @video_collection %> |
 <%= link_to 'Back', video_collections_path %>
