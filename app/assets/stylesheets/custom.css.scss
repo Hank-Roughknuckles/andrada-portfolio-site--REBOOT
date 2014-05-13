@@ -1,20 +1,6 @@
 @import "bootstrap";
-
-$background_tan: #f2e9d8;
-$charcoal_grey: #464646;
-$selected_blue: #8094a6;
-
-@font-face
-{
-  font-family: 'fauna-one';
-  src: font-url('FaunaOne-Regular.ttf');
-}
-
-@font-face
-{
-  font-family: 'khmer';
-  src: font-url('KhmerUI.ttf');
-}
+@import "colors";
+@import "fonts";
 
 body
 {
@@ -107,67 +93,6 @@ body
     background: url("Andrada_Popan_Dorca_titlebar.png");
     width: 655px;
     height: 118px;
-  }
-
-  //navbar stuff
-  .navbar
-  {
-    padding-left: 0px;
-    margin-left: 46px;
-
-    li
-    {
-      float:left;
-      list-style-type:none;
-    }
-
-    a
-    {
-      font-size: 133%;
-      color: #464646;
-      display: block;
-      // margin: 5px auto;
-      margin-left:auto;
-      margin-right:auto;
-      padding: 0px 41px;
-      max-width: 227px;
-      width: 171px;
-
-      &:hover
-      {
-        color: $selected_blue;
-        text-decoration: none;
-      }
-    }
-    a#navbar-first
-    {
-      padding-left: 30px;
-    }
-
-    .selected
-    {
-      color: $selected_blue;
-    }
-  }
-
-  /* .sign_in */
-  /* { */
-  /*   float: right; */
-  /*   margin-bottom: 10px; */
-  /*   margin-top: 15px; */
-  /* } */
-
-  //Main content
-  .main_content
-  {
-    min-height: 454px;
-    width: 943px;
-
-    h3 {
-      font-family: 'khmer';
-      margin-top: -15px;
-      margin-bottom: 10px;
-    }
   }
 
   // Edit table

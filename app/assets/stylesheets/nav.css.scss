@@ -1,0 +1,39 @@
+@import "colors";
+@import "compatibility_mixins";
+
+nav {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 17%;
+  background-color: #282828;
+  @include opacity(0.87);
+  border-top-right-radius: 5%;
+  border-bottom-right-radius: 5%;
+  font-family: khmer;
+
+  ul {
+    height: 100%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    display: table;
+    
+    li {
+      display: table-row;
+      list-style: none;
+      font-size: 1.5em;
+      
+      a {
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      a.selected {
+        color: $selected_blue;
+        text-decoration: underline;
+      }
+    }
+  }
+}
