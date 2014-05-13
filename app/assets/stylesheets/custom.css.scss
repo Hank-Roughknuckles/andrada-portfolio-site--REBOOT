@@ -4,7 +4,7 @@
 
 body
 {
-  background-color: $background_tan;
+  background-color: $selected_blue;
   color: $charcoal_grey;
   font-family: 'fauna-one';
 
@@ -230,7 +230,7 @@ body
     font-size: 18px;
   }
 
-  .fake_link 
+  .fake-link 
   {
     cursor: pointer;
     color: #428bca;
