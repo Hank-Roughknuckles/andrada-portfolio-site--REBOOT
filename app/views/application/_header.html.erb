@@ -1,49 +1,9 @@
 <div id="titlebar">
-  <%= link_to image_tag("Andrada_Popan_Dorca_titlebar.png"), root_path %>
+  <div id="js-toggle-menu">
+    <div class="toggle-menu-line" id="top"></div>
+    <div class="toggle-menu-line" id="middle"></div>
+    <div class="toggle-menu-line" id="bottom"></div>
+  </div>
+
+  <%= link_to "Andrada Popan Dorca", root_path %>
 </div>
-
-<ul class="navbar">
-  <li id="nav_item_1"><%= link_to "About Me", 
-    {
-      :controller => 'about_me_contents',
-      :action => 'index'
-    }, 
-    { 
-      :class => ('selected' if request.path =~ /landing_page/ || request.path == "/"),
-      :id => "navbar-first"
-    } 
-    %>
-  </li>
-
-  <li id="nav_item_2"><%= link_to "Video", 
-    {
-      :controller => 'video_works',
-      :action => 'index'
-    },
-    { :class => ('selected' if request.path =~ /showreel/) } 
-    %>
-  </li>
-
-  <li id="nav_item_3"><%= link_to "Photo", 
-    {
-      :controller => 'works',
-      :action => 'index'
-    }, 
-    { :class => ('selected' if request.path =~ /works/) } 
-    %>
-  </li>
-
-  <li id="nav_item_4"><%= link_to "Current Projects", 
-    {
-      :controller => 'current_projects',
-      :action => 'index'
-    }, 
-    { :class => ('selected' if request.path =~ /current_projects/) } 
-    %>
-  </li>
-
-  <li id="nav_item_5"><%= link_to "Contact", Contact.first,
-    { :class => ('selected' if request.path =~ /contact/) } 
-    %>
-  </li>
-</ul>

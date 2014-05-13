@@ -38,6 +38,24 @@ describe "VideoCollections" do
   describe "The Index Page" do
     it { should have_title "Video" } 
     it { should have_content "Video" }
+    it { should have_xpath(
+      "//nav//a[@href=\"#{about_me_contents_path}\"]"
+    )}
+    it { should have_xpath(
+      "//nav//a[@href=\"#{video_collections_path}\"]"
+    )}
+    it "should have a path to photo collections"
+    it "should have a path to current projects"
+    it "should have a path to the contact page"
+    # it { should have_xpath(
+    #   "//nav//a[@href=\"#{photo_collections_path}\"]"
+    # )}
+    # it { should have_xpath(
+    #   "//nav//a[@href=\"#{current_projects_path}\"]"
+    # )}
+    # it { should have_xpath(
+    #   "//nav//a[@href=\"#{contact_path(Contact.first)}\"]"
+    # )}
 
     #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     # "Create" buttons
