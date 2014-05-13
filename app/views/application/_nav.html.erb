@@ -1,0 +1,50 @@
+<nav>
+  <ul>
+    <li class="nav-item"><%= link_to "About Me", 
+      {
+        :controller => 'about_me_contents',
+        :action => 'index'
+      }, 
+      { 
+        :class => ('selected' if request.path =~ /about_me/),
+      } 
+      %>
+    </li>
+
+
+    <li class="nav-item"><%= link_to "Video", 
+      {
+        :controller => 'video_collections',
+        :action => 'index'
+      },
+      { :class => ('selected' if request.path =~ /video/) } 
+      %>
+    </li>
+
+
+    <li class="nav-item"><%= link_to "Photo", 
+      {
+        :controller => 'photo_collections',
+        :action => 'index'
+      }, 
+      { :class => ('selected' if request.path =~ /photo/) } 
+      %>
+    </li>
+
+
+    <li class="nav-item"><%= link_to "Current Projects", 
+      {
+        :controller => 'current_projects',
+        :action => 'index'
+      }, 
+      { :class => ('selected' if request.path =~ /current_projects/) } 
+      %>
+    </li>
+
+
+    <li class="nav-item"><%= link_to "Contact", Contact.first,
+      { :class => ('selected' if request.path =~ /contact/) } 
+      %>
+    </li>
+  </ul>
+</nav>
