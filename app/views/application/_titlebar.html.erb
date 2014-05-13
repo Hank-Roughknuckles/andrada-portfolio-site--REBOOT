@@ -1,10 +1,18 @@
 <div id="titlebar">
-  <div id="js-toggle-menu">
-    <div class="toggle-menu-line" id="top"></div>
-    <div class="toggle-menu-line" id="middle"></div>
-    <div class="toggle-menu-line" id="bottom"></div>
+  <div id="js-toggle-menu" class="fake-link">
+    <div class="line-wrapper">
+      <div class="toggle-menu-line"></div>
+    </div>
+    <div class="line-wrapper">
+      <div class="toggle-menu-line"></div>
+    </div>
+    <div class="line-wrapper">
+      <div class="toggle-menu-line"></div>
+    </div>
   </div>
 
-  <%= link_to "Andrada Popan Dorca", root_path %>
-  <%= yield(:breadcrumbs) %>
+  <div class="breadcrumbs">
+    <%= link_to "Andrada Popan Dorca", root_path %>
+    <%= yield(:breadcrumbs) %>
+  </div>
 </div>
