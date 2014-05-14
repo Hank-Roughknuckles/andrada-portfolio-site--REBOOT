@@ -2,16 +2,40 @@
 @import "colors";
 @import "fonts";
 
+html {
+  height: 100%;
+}
+
 body
 {
+  height: 100%;
   background-color: $selected_blue;
   color: $charcoal_grey;
-  font-family: 'fauna-one';
+  font-family: 'khmer';
 
-  .secondary_container
-  {
-    margin-left: 105px;
-    width: 943px;
+  .table-wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+
+    /* h1 will be the main page header */
+    aside {
+      display: table-cell;
+      text-align: center;
+      width: 25%;
+      vertical-align: middle;
+      font-size: 2em;
+      color: white;
+      border: 1px dotted red;
+    }
+
+    main {
+      display: table-cell; 
+      border: 1px dotted red;
+      height: 100%;
+      width: 75%;
+      padding: 100px 0;
+    }
   }
 
   .envelope
@@ -67,14 +91,6 @@ body
     /* background-color: $background_tan; */
     float:left;
     border: 0;
-  }
-
-  .container
-  {
-    h1 
-    {
-      margin-bottom: 20px;
-    }
   }
 
   .emphasis
