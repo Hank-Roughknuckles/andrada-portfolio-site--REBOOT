@@ -1,12 +1,10 @@
 #titlebar {
   position: absolute;
+  top: 3%;
   left: 3%;
-  font-family: khmer;
   color: white;
 
   #js-toggle-menu {
-    min-width: 60px;
-    width: 60px;
     display: table-cell;
     border-spacing: 0.3em 0.3em;
 
@@ -23,6 +21,7 @@
   }
 
   .breadcrumbs {
+    padding-left: 0.3em;
     font-size: 1.5em;
     display: table-cell;
     vertical-align: middle;
