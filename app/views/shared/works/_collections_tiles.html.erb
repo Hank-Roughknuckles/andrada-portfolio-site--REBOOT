@@ -1,6 +1,6 @@
 <% collections.each do |collection| %>
 
-  <section class="collection fake-link" 
+  <li class="collection fake-link" 
            id="collection-<%= collection.id %>">
 
     <%= link_to video_collection_path(collection), 
@@ -19,6 +19,6 @@
     <%= link_to 'Destroy', collection, 
       method: :delete, 
       data: { confirm: 'Are you sure?' } %>
-  </section>
+  </li>
 
 <% end %>

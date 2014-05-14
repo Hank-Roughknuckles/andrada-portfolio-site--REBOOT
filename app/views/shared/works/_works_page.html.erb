@@ -9,11 +9,13 @@
 
 
 
-<div class="works">
-  <%= render 'shared/works/collections_tiles', collections: collections %>
-  <%= render 'shared/works/works_tiles', works: works %>
+<div id="works-grid" class="grid-slider">
+  <ul class="gs-list">
+    <%= render 'shared/works/collections_tiles', collections: 
+                                                    collections %>
+    <%= render 'shared/works/works_tiles', works: works %>
+  </ul>
 </div>
-
 <br>
 
 <% if user_signed_in? %>

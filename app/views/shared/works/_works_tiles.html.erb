@@ -1,6 +1,6 @@
 <% works.each do |work| %>
 
-  <section class="work fake-link" id="work-<%= work.id %>">
+  <li class="work fake-link" id="work-<%= work.id %>">
     <%= image_tag(work.tile_image_link, title: work.header) %>
 
     <%= link_to 'Show', work %>
@@ -8,6 +8,6 @@
     <%= link_to 'Destroy', work, 
       method: :delete, 
       data: { confirm: 'Are you sure?' } %>
-  </section>
+  </li>
 
 <% end %>
