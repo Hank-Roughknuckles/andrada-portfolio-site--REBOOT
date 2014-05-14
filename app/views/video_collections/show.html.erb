@@ -1,4 +1,5 @@
 <% provide( :title, "Video Works - #{@video_collection.name}" ) %>
+<% provide( :header, @video_collection.name ) %>
 
 <%= render "shared/works/works_page", collections: @collections,
                                       works: @works %>

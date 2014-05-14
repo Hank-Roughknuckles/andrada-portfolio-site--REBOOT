@@ -1,16 +1,17 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "works" %>
+<% end %> 
+
 <% content_for :breadcrumbs do %>
   <%= render "shared/works/breadcrumbs", collection: @video_collection %>
 <% end %>
 
-
-<%= render  'shared/works/main_header', collection: @video_collection %>
 
 
 <div class="works">
   <%= render 'shared/works/collections_tiles', collections: collections %>
   <%= render 'shared/works/works_tiles', works: works %>
 </div>
-
 
 <br>
 
