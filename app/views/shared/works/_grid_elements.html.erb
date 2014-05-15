@@ -1,5 +1,7 @@
-<% collections.each do |collection| %>
+<% elements = collections + works %>
+<% elements.sort_by! { |element| element.position } %>
 
+<% elements.each do |element| %>
   <li class="collection fake-link" 
            id="collection-<%= collection.id %>">
 
@@ -13,10 +15,20 @@
 
     <% end %>
 
-
     <%= link_to 'Show', collection %>
     <%= link_to 'Edit', edit_video_collection_path(collection) %>
     <%= link_to 'Destroy', collection, 
+      method: :delete, 
+      data: { confirm: 'Are you sure?' } %>
+  </li>
+
+
+  <li class="work fake-link" id="work-<%= work.id %>">
+    <%= image_tag(work.tile_image_link, title: work.header) %>
+
+    <%= link_to 'Show', work %>
+    <%= link_to 'Edit', edit_video_work_path(work) %>
+    <%= link_to 'Destroy', work, 
       method: :delete, 
       data: { confirm: 'Are you sure?' } %>
   </li>
