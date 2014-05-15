@@ -1,0 +1,19 @@
+<li class="collection fake-link" 
+         id="collection-<%= collection.id %>">
+
+  <%= link_to video_collection_path(collection), 
+    class:  "collection", 
+    id:     "collection-#{collection.id}" do %>
+
+    <%= image_tag(collection.tile_image_link, 
+      title: collection.name) %>
+    <%= collection.name %>
+
+  <% end %>
+
+  <%= link_to 'Show', collection %>
+  <%= link_to 'Edit', edit_video_collection_path(collection) %>
+  <%= link_to 'Destroy', collection, 
+    method: :delete, 
+    data: { confirm: 'Are you sure?' } %>
+</li>

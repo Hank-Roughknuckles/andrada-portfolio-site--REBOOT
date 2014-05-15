@@ -1,36 +1,14 @@
 <% elements = collections + works %>
-<% elements.sort_by! { |element| element.position } %>
+<% elements.sort_by { |element| element.position } %>
+
 
 <% elements.each do |element| %>
-  <li class="collection fake-link" 
-           id="collection-<%= collection.id %>">
-
-    <%= link_to video_collection_path(collection), 
-      class:  "collection", 
-      id:     "collection-#{collection.id}" do %>
-
-      <%= image_tag(collection.tile_image_link, 
-        title: collection.name) %>
-      <%= collection.name %>
-
-    <% end %>
-
-    <%= link_to 'Show', collection %>
-    <%= link_to 'Edit', edit_video_collection_path(collection) %>
-    <%= link_to 'Destroy', collection, 
-      method: :delete, 
-      data: { confirm: 'Are you sure?' } %>
-  </li>
+  <% if element.class.to_s =~ /Collection/ %>
+    <%= render 'shared/works/collection_tile', collection: element %>
+  <% end %>
 
 
-  <li class="work fake-link" id="work-<%= work.id %>">
-    <%= image_tag(work.tile_image_link, title: work.header) %>
-
-    <%= link_to 'Show', work %>
-    <%= link_to 'Edit', edit_video_work_path(work) %>
-    <%= link_to 'Destroy', work, 
-      method: :delete, 
-      data: { confirm: 'Are you sure?' } %>
-  </li>
-
+  <% if element.class.to_s =~ /Work/ %>
+    <%= render 'shared/works/work_tile', work: element %>
+  <% end %>
 <% end %>
