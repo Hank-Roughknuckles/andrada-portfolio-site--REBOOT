@@ -3,5 +3,12 @@
 
   .gs-caption {
     background-color: transparent !important;
+    text-align: center;
+  }
+  
+  .work-tile {
+    .gs-wrapper {
+      border-width: 0 !important;
+    }
   }
 }
