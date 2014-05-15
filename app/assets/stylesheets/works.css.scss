@@ -6,9 +6,13 @@
     text-align: center;
   }
   
-  .work-tile {
+  .gs-wrapper {
+    border-width: 0 !important;
+  }
+
+  .collection-tile {
     .gs-wrapper {
-      border-width: 0 !important;
+      box-shadow: 5px 5px 0 #444;
     }
   }
 }
