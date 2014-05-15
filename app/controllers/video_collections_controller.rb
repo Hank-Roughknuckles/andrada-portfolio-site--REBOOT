@@ -8,7 +8,7 @@ class VideoCollectionsController < ApplicationController
   def index
     # @collections = VideoCollection.all
     @collections = VideoCollection.roots
-    @works = VideoWork.where(folder_id: nil)
+    @works = VideoWork.where(folder_id: "")
   end
 
   # GET /video_collections/1
