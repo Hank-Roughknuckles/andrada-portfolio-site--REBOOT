@@ -1,3 +1,8 @@
+/*####################################################################*/
+/*#
+/*#   Grid Slider
+/*#
+/*####################################################################*/
 .grid-slider {
   background-color: transparent !important;
 
@@ -5,7 +10,7 @@
     background-color: transparent !important;
     text-align: center;
   }
-  
+
   .gs-wrapper {
     border-width: 0 !important;
   }
@@ -15,4 +20,21 @@
       box-shadow: 5px 5px 0 #444;
     }
   }
+
+
+  /*--------------------------------------------------------------------*/
+  /*-   Slide next/prev buttons
+  /*--------------------------------------------------------------------*/
+  .gs-prev div, .gs-next div {
+    height: 25px;
+  }
+
+  .gs-prev  div {
+    background-position: -17px 4px;
+  }
+
+  .gs-next  div {
+    background-position: -16px -19px;
+  }
+
 }

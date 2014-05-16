@@ -36,7 +36,7 @@ $ ->
     captionAlign:       'bottom',
     hoverEffect:        'zoomIn',
     captionPosition:    'inside',
-    navButtons:         'mouseover',
+    navButtons:         'normal',
     keyboard:           true,
     control:            'number',
     # captionHeight:      50
