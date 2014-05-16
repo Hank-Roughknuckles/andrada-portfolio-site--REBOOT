@@ -1,10 +1,10 @@
 <li class="collection-tile" 
     id="collection-<%= collection.id %>">
 
-  <%= link_to video_collection_path(collection), 
-    class:  "collection", 
+  <%= link_to video_collection_path(collection),
+    class:  "collection",
     id:     "collection-#{collection.id}" do %>
-    <%= image_tag(collection.tile_image_link, 
+    <%= image_tag(collection.tile_image_link,
       title: collection.name) %>
   <% end %>
   <div>
@@ -14,8 +14,8 @@
 
     <% if user_signed_in? %>
       <%= link_to 'Edit', edit_video_collection_path(collection) %>
-      <%= link_to 'Destroy', collection, 
-        method: :delete, 
+      <%= link_to 'Destroy', collection,
+        method: :delete,
         data: { confirm: 'Are you sure?' } %>
     <% end %>
   </div>
