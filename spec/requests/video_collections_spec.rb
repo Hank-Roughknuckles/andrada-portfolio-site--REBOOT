@@ -15,7 +15,7 @@ describe "VideoCollections" do
                                           name: "Child Collection") 
   end
   let!(:top_level_work) do 
-    FactoryGirl.create(:video_work, folder_id: nil)
+    FactoryGirl.create(:video_work, folder_id: "")
   end
   let!(:work_in_parent_collection) do 
     FactoryGirl.create(:video_work, folder_id: parent_collection.id) 
@@ -113,10 +113,12 @@ describe "VideoCollections" do
         end
 
 
-        it do 
-          should have_link(parent_collection.name, 
-            href: video_collection_path(parent_collection))
-        end
+        it { should have_content parent_collection.name }
+        it { 
+          should have_xpath(
+            "//a[@href='#{video_collection_path(parent_collection)}']"
+          )
+        }
 
         it { should have_xpath(parent_image_xpath) }
 
@@ -124,13 +126,16 @@ describe "VideoCollections" do
       end
 
       describe "the works" do
+        before do
+          print page.html
+        end
         let(:work_image_xpath) do
-          "//img[@src=\"#{top_level_work.tile_image_link}\"]" 
+          "//img[@src='#{top_level_work.tile_image_link}']" 
         end
 
         it { should have_xpath      work_image_xpath }
         it { should have_selector   "#work-#{top_level_work.id}" }
-        
+
         describe "the works inside of collections" do
           it { should_not have_selector "#work-#{work_in_parent_collection.id}" }
           it { should_not have_selector "#work-#{work_in_child_collection.id}" }
@@ -142,7 +147,11 @@ describe "VideoCollections" do
     # 1-deep works/collections
     #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     describe "the inside of the parent-collection" do
-      before { click_link parent_collection.name }
+      before {
+        find(:xpath,
+              "//a[@href='#{video_collection_path(parent_collection)}']"
+            ).click
+      }
 
       it { should have_content parent_collection.name }
 
@@ -153,9 +162,11 @@ describe "VideoCollections" do
 
         it { should have_xpath(child_image_xpath) }
 
+        it { should have_content child_collection.name }
         it do 
-          should have_link(child_collection.name, 
-            href: video_collection_path(child_collection))
+          should have_xpath(
+            "//a[@href='#{video_collection_path(child_collection)}']"
+          ) 
         end
 
         it { should have_selector("#collection-#{child_collection.id}") }
@@ -179,7 +190,12 @@ describe "VideoCollections" do
         # 2-deep works/collections
         #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         describe "inside the child collection" do
-          before { click_link child_collection.name }
+          before { 
+            find(:xpath,
+                  "//a[@href='#{video_collection_path(child_collection)}']"
+                ).click
+          }
+          
 
           describe "the works inside the child collection" do
             let(:work_image_xpath) do

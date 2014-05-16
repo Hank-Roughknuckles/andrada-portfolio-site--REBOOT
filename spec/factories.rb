@@ -13,6 +13,7 @@ FactoryGirl.define do
     u.sequence(:description) { |n| "Description #{n}" }
     work_link         "https://www.google.com/images/srpr/logo11w.png"
     tile_image_link   "https://www.google.com/images/srpr/logo11w.png"
+    u.sequence(:position)   {|n| n}
 
     factory :video_work, class: VideoWork do 
     end
@@ -23,6 +24,7 @@ FactoryGirl.define do
     factory :video_collection, class: VideoCollection do |u|
       u.sequence(:name) { |n| "Video Collection #{n}" }
       tile_image_link   "http://4.bp.blogspot.com/-Yv8pu23VIQk/UwqudtA4_KI/AAAAAAAAEjk/3lGSOmuFonQ/s1600/pencil-1.png"
+      u.sequence(:position)   {|n| n}
       type "VideoCollection"
     end
   end
