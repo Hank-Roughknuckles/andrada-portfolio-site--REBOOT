@@ -126,9 +126,6 @@ describe "VideoCollections" do
       end
 
       describe "the works" do
-        before do
-          print page.html
-        end
         let(:work_image_xpath) do
           "//img[@src='#{top_level_work.tile_image_link}']" 
         end
