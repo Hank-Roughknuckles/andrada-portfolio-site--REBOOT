@@ -8,27 +8,25 @@
 <% end %>
 
 
-
 <div id="works-grid" class="grid-slider">
   <ul class="gs-list">
     <%= render 'shared/works/grid_elements', collections: collections,
-                                             works: works%>
+      works: works%>
   </ul>
+
+  <% if user_signed_in? %>
+    <% if params[:controller] =~ /video/ %>
+      <% collection_destination = new_video_collection_path %>
+      <% work_destination = new_video_work_path %>
+    <% end %>
+    <% if params[:controller] =~ /photo/ %>
+      <% collection_destination = new_photo_collection_path %>
+      <% work_destination = new_photo_work_path %>
+    <% end %>
+
+
+    <%= link_to 'New Video Collection', collection_destination %>
+    <br>
+    <%= link_to 'New Video Entry', work_destination %>
+  <% end %>
 </div>
-<br>
-
-<% if user_signed_in? %>
-
-  <% if params[:controller] =~ /video/ %>
-    <% collection_destination = new_video_collection_path %>
-    <% work_destination = new_video_work_path %>
-  <% end %>
-  <% if params[:controller] =~ /photo/ %>
-    <% collection_destination = new_photo_collection_path %>
-    <% work_destination = new_photo_work_path %>
-  <% end %>
-
-
-  <%= link_to 'New Video Collection', collection_destination %>
-  <%= link_to 'New Video Entry', work_destination %>
-<% end %>

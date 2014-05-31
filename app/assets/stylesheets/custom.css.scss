@@ -13,28 +13,38 @@ body
   color: $charcoal_grey;
   font-family: 'khmer';
 
-  .table-wrapper {
+  .table {
     display: table;
+    margin-bottom: 0 !important;
+  }
+
+  .table-row {
+    display: table-row;
+    width: 500px;
+  }
+
+  .table-cell {
+    display: table-cell;
+  }
+
+  aside {
+    display: table-cell;
+    text-align: center;
+    width: 25%;
+    vertical-align: middle;
+    font-size: 2em;
+    color: white;
+  }
+
+  main {
     height: 100%;
-    width: 100%;
+    width: 750px !important;
+    min-width: 750px !important;
+    padding: 100px 30px 0px 0px;
+  }
 
-    /* h1 will be the main page header */
-    aside {
-      display: table-cell;
-      text-align: center;
-      width: 25%;
-      vertical-align: middle;
-      font-size: 2em;
-      color: white;
-    }
-
-    main {
-      display: table-cell; 
-      height: 100%;
-      width: 75%;
-      /* padding: 75px 0; */
-      vertical-align: middle;
-    }
+  .sign_in {
+    text-align: right;
   }
 
   .envelope
@@ -85,11 +95,9 @@ body
     float: left;
   }
 
-  .notice, .alert
-  {
-    /* background-color: $background_tan; */
-    float:left;
-    border: 0;
+  .notice, .alert {
+    padding: 0;
+    text-align: center;
   }
 
   .emphasis

@@ -15,20 +15,29 @@
   <%= render 'nav' %>
   <%= render 'titlebar' %>
 
-  <div class="table-wrapper">
-    <aside>
+  <div class="table">
+    <aside class="table-cell">
       <h1><%= yield(:header) %></h1>
     </aside>
 
-    <main>
+    <main class="table-cell">
       <%= yield %>
+
+      <div class="table">
+        <div class="table-row">
+          <div class="notice table-cell"></div>
+        </div>
+        <div class="table-row">
+          <div class="alert table-cell"></div>
+        </div>
+
+        <div class="table-row">
+          <%= render 'shared/layout_sign_in_links' %>
+        </div>
+      </div>
     </main>
   </div>
 
-  <%= render 'shared/layout_sign_in_links' %>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
   <%# <%= debug(params) if Rails.env.development? %>
 
