@@ -45,6 +45,7 @@ body
 
   .sign_in {
     text-align: right;
+    background-color: $selected_blue;
   }
 
   .envelope
@@ -93,6 +94,10 @@ body
     height: 10px;
     margin-bottom: -10px;
     float: left;
+  }
+
+  .footer * {
+    background-color: $selected_blue;
   }
 
   .notice, .alert {
