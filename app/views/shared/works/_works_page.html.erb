@@ -18,15 +18,21 @@
     <% if params[:controller] =~ /video/ %>
       <% collection_destination = new_video_collection_path %>
       <% work_destination = new_video_work_path %>
+      <% new_work_text = "New Video" %>
     <% end %>
     <% if params[:controller] =~ /photo/ %>
       <% collection_destination = new_photo_collection_path %>
       <% work_destination = new_photo_work_path %>
+      <% new_work_text = "New Photo" %>
     <% end %>
 
 
-    <%= link_to 'New Video Collection', collection_destination %>
+    <%= link_to "", collection_destination, 
+      class: "glyphicon glyphicon-book",
+      title: "New collection" %>
+    <%= link_to "", collection_destination, 
+      class: "glyphicon glyphicon-plus-sign",
+      title: new_work_text %>
     <br>
-    <%= link_to 'New Video Entry', work_destination %>
   <% end %>
 </div>
