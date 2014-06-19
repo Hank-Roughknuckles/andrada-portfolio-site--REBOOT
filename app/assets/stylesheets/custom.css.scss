@@ -46,6 +46,10 @@ body
     padding-top: 2.25%;
   }
 
+  .new-collection, .new-work {
+    text-decoration: none;
+  }
+
   .sign_in {
     text-align: right;
     background-color: $selected_blue;
